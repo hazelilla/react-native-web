@@ -1,17 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import Home from './src/screens/Home';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { default as theme } from './theme.json';
 
 const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'purple',
-      }}>
-      <Text>MERABA, world!</Text>
-    </View>
+    <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
+      <Home />
+    </ApplicationProvider>
+
   );
 };
 
