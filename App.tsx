@@ -1,14 +1,24 @@
 import React from 'react';
-import Home from './src/screens/Home';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider } from '@ui-kitten/components';
 import { default as theme } from './theme.json';
+import MobileNavigation, { WebNavigation } from './src/navigation/navigation';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { Platform } from 'react-native';
 
 const App = () => {
   return (
-    <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-      <Home />
-    </ApplicationProvider>
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
+        {
+          Platform.OS === 'web' ?
+          <WebNavigation/>
+          :
+          <MobileNavigation />
+        }
+      </ApplicationProvider>
+    </>
   );
 };
 

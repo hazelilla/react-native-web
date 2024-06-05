@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, Platform, ScrollView, View } from 'react-native';
 import { CircularProgressBar, Layout, Text, Button, Radio, CheckBox, CheckBoxProps } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import DateTimePicker from '../component/DateTimePicker';
@@ -9,7 +9,7 @@ const useCheckboxState = (initialCheck = false): CheckBoxProps => {
     return { checked, onChange: setChecked };
 };
 
-const Home = () => {
+const HomeScreen = () => {
     const [checked, setChecked] = React.useState(false);
     const [progress, setProgress] = React.useState(0);
     const primaryCheckboxState = useCheckboxState();
@@ -29,8 +29,7 @@ const Home = () => {
     };
 
     const baseColors = [
-        "#FEE4EA", "#FECADA", "#FDAFCF", "#FC9BCD", "#FB7AC9",
-        "#D759B3", "#B43D9E", "#912688", "#771778"
+        "#FEFDE9", "#FEFBD3", "#FDF9BD", "#FBF5AB", "#FAF190"
     ];
 
     const colors = Array.from({ length: 100 }, (_, index) => baseColors[index % baseColors.length]);
@@ -186,8 +185,8 @@ const styles = StyleSheet.create({
     flatListContainer: {
         flex: 1,
         width: '100%',
-        marginTop: 80
+        marginTop: Platform.OS !== 'web' ? 50 : 0
     },
 });
 
-export default Home;
+export default HomeScreen;
