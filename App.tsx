@@ -9,7 +9,6 @@ const App = () => {
     <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
       <Home />
     </ApplicationProvider>
-
   );
 };
 

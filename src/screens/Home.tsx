@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ScrollView, View } from 'react-native';
+import { FlatList, ScrollView, View } from 'react-native';
 import { CircularProgressBar, Layout, Text, Button, Radio, CheckBox, CheckBoxProps } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import DateTimePicker from '../component/DateTimePicker';
@@ -12,7 +12,6 @@ const useCheckboxState = (initialCheck = false): CheckBoxProps => {
 const Home = () => {
     const [checked, setChecked] = React.useState(false);
     const [progress, setProgress] = React.useState(0);
-
     const primaryCheckboxState = useCheckboxState();
     const successCheckboxState = useCheckboxState();
     const infoCheckboxState = useCheckboxState();
@@ -29,13 +28,34 @@ const Home = () => {
         setProgress(progress + 10);
     };
 
-    return (
-        <ScrollView contentContainerStyle={styles.scrollView}>
-            <Layout style={styles.container}>
-                <Text category='h1' >Welcome to Home</Text>
-                <Text category='s1' >Explore what's new</Text>
+    const baseColors = [
+        "#FEE4EA", "#FECADA", "#FDAFCF", "#FC9BCD", "#FB7AC9",
+        "#D759B3", "#B43D9E", "#912688", "#771778"
+    ];
 
-                <Layout style={{ marginVertical: 50 }}>
+    const colors = Array.from({ length: 100 }, (_, index) => baseColors[index % baseColors.length]);
+
+    const renderItem = ({ item }: { item: any }) => (
+        <View style={{ borderRadius: 100, width: 80, height: 80, backgroundColor: item, marginRight: 25 }} />
+    );
+
+    return (
+        <Layout style={styles.container}>
+            <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
+                <View style={styles.flatListContainer}>
+                    <FlatList
+                        data={colors}
+                        renderItem={renderItem}
+                        keyExtractor={(item, index) => index.toString()}
+                        horizontal
+                    />
+                </View>
+
+                <Layout style={{ marginVertical: 50, alignItems: 'center' }}>
+
+                    <Text category='h1' >Welcome to Home</Text>
+                    <Text category='s1' >Explore what's new</Text>
+
                     <Button
                         style={styles.button}
                         appearance='filled'
@@ -58,7 +78,7 @@ const Home = () => {
                     </Button>
 
                     <Button
-                        style={{backgroundColor: 'black'}}
+                        style={{ backgroundColor: 'black' }}
                         appearance='filled'
                     >
                         COLORED
@@ -67,83 +87,78 @@ const Home = () => {
                     <Radio
                         checked={checked}
                         onChange={nextChecked => setChecked(nextChecked)}
-                        style={{ marginVertical: 30 }}
+                        style={{ marginTop: 20 }}
                     >
                         {`Checked: ${checked}`}
                     </Radio>
 
-                    <CircularProgressBar progress={progress} style={{ marginVertical: 30 }} />
+                    <CircularProgressBar progress={progress} style={{ marginVertical: 20 }} />
 
-                    <Button onPress={increaseProgress}>Increase Progress</Button>
-                </Layout>
+                    <Button onPress={increaseProgress} style={{ marginBottom: 30 }}>Increase Progress</Button>
 
-                <Layout
-                    level='1'
-                >
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='primary'
-                        {...primaryCheckboxState}
-                    >
-                        Primary
-                    </CheckBox>
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='success'
-                        {...successCheckboxState}
-                    >
-                        Success
-                    </CheckBox>
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='info'
-                        {...infoCheckboxState}
-                    >
-                        Info
-                    </CheckBox>
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='warning'
-                        {...warningCheckboxState}
-                    >
-                        Warning
-                    </CheckBox>
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='danger'
-                        {...dangerCheckboxState}
-                    >
-                        Danger
-                    </CheckBox>
-
-                    <CheckBox
-                        style={styles.checkbox}
-                        status='basic'
-                        {...basicCheckboxState}
-                    >
-                        Basic
-                    </CheckBox>
-
-                    <View style={styles.controlContainer}>
+                    <Layout level='3' style={{ padding: 10 }}>
                         <CheckBox
                             style={styles.checkbox}
-                            status='control'
-                            {...controlCheckboxState}
+                            status='primary'
+                            {...primaryCheckboxState}
                         >
-                            Control
+                            Primary
                         </CheckBox>
-                    </View>
 
+                        <CheckBox
+                            style={styles.checkbox}
+                            status='success'
+                            {...successCheckboxState}
+                        >
+                            Success
+                        </CheckBox>
+
+                        <CheckBox
+                            style={styles.checkbox}
+                            status='info'
+                            {...infoCheckboxState}
+                        >
+                            Info
+                        </CheckBox>
+
+                        <CheckBox
+                            style={styles.checkbox}
+                            status='warning'
+                            {...warningCheckboxState}
+                        >
+                            Warning
+                        </CheckBox>
+
+                        <CheckBox
+                            style={styles.checkbox}
+                            status='danger'
+                            {...dangerCheckboxState}
+                        >
+                            Danger
+                        </CheckBox>
+
+                        <CheckBox
+                            style={styles.checkbox}
+                            status='basic'
+                            {...basicCheckboxState}
+                        >
+                            Basic
+                        </CheckBox>
+
+                        <View style={styles.controlContainer}>
+                            <CheckBox
+                                style={styles.checkbox}
+                                status='control'
+                                {...controlCheckboxState}
+                            >
+                                Control
+                            </CheckBox>
+                        </View>
+                    </Layout>
+                    <DateTimePicker />
                 </Layout>
-
-                <DateTimePicker/>
-            </Layout>
-        </ScrollView>
+            </ScrollView>
+        </Layout>
     );
 };
 
@@ -153,12 +168,11 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        alignItems: 'center',
-        paddingVertical: 80,
         padding: 16,
     },
     button: {
         margin: 2,
+        marginTop: 15
     },
     checkbox: {
         margin: 2,
@@ -168,7 +182,12 @@ const styles = StyleSheet.create({
         margin: 2,
         padding: 6,
         backgroundColor: '#3366FF',
-    }
+    },
+    flatListContainer: {
+        flex: 1,
+        width: '100%',
+        marginTop: 80
+    },
 });
 
 export default Home;
