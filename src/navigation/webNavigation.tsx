@@ -16,10 +16,10 @@ const WebNavigation: React.FC = () => {
     const [currentRoute, setCurrentRoute] = useState('/');
     const [value, setValue] = useState('');
     const navigate = useNavigate();
-    const isBigScreen = useMediaQuery({ minWidth: 1200 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1397 });
     const isSmallerTablet = useMediaQuery({ minWidth: 768, maxWidth: 1180 });
     const isMobile = useMediaQuery({ maxWidth: 767 });
+    const [isSearch, setIsSearch] = useState(false);
 
     const handleNavigation = (route: string) => {
         setCurrentRoute(route);
@@ -30,12 +30,16 @@ const WebNavigation: React.FC = () => {
         isMobile ? <Icon name={iconName} width={24} height={24} fill='black' /> : <Text style={{ color: 'black' }}>{text}</Text>
     );
 
+    const handleBlur = () => {
+        setIsSearch(false);
+        setValue('');
+    };
 
     return (
         <View style={styles.webContainer}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <View style={[styles.navbar, { width: isTablet ? 'auto' : '75%' }]}>
-                    <Text style={[styles.header, { fontSize: isMobile ? 20 : 30 }]}>E-market</Text>
+                <View style={[styles.navbar, { width: isTablet || isMobile ? 'auto' : '75%' }]}>
+                    {!isSearch && <Text style={[styles.header, { fontSize: isMobile ? 20 : 30 }]}>E-market</Text>}
                     <Button
                         style={[
                             {
@@ -86,17 +90,50 @@ const WebNavigation: React.FC = () => {
                     </Button>
                 </View>
                 {currentRoute === '/browse' &&
-                    <Input
-                        placeholder='Search for your grocery...'
-                        value={value}
-                        onChangeText={nextValue => setValue(nextValue)}
-                        style={{
-                            borderRadius: 80, borderWidth: 2, marginRight: 25,
-                            width: isSmallerTablet ? '32%' : isTablet ? '25%' : '22%'
-                        }}
-                        placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
-                        accessoryLeft={SearchIcon}
-                    />}
+                    <>
+                        {(isMobile && !isSearch) &&
+                            <Button
+                                style={[
+                                    {
+                                        ...styles.navButton,
+                                        width: 15,
+                                        height: 15
+                                    },
+                                    styles.activeNavButton
+                                ]}
+                                onPress={() => setIsSearch(true)}>
+                                <NavIcon isMobile={isMobile} iconName='search-outline' text='search' />
+                            </Button>}
+                        {!isMobile &&
+                            <Input
+                                placeholder='Search for your grocery...'
+                                value={value}
+                                onChangeText={nextValue => setValue(nextValue)}
+                                style={{
+                                    borderRadius: 80, borderWidth: 2, marginRight: 25,
+                                    width: isSmallerTablet ? '32%' : isTablet ? '25%' : '22%'
+                                }}
+                                placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
+                                accessoryLeft={SearchIcon}
+                                onBlur={handleBlur}
+                            />
+                        }
+                        {(isMobile && isSearch) &&
+                            <Input
+                                placeholder='ex. Chocolate Milk..'
+                                value={value}
+                                onChangeText={nextValue => setValue(nextValue)}
+                                style={{
+                                    borderRadius: 80, borderWidth: 2, marginRight: 25,
+                                    width: '42%'
+                                }}
+                                placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
+                                accessoryLeft={SearchIcon}
+                                onBlur={handleBlur}
+                            />
+                        }
+                    </>
+                }
             </View>
             <Routes>
                 <Route path="/" element={<HomeScreen />} />
@@ -126,7 +163,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FAF190',
         borderTopRightRadius: 80,
         borderBottomRightRadius: 80,
-        justifyContent: 'center'
+
     },
     navButton: {
         marginRight: 20,
