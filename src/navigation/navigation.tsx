@@ -23,12 +23,34 @@ const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
 const tabBarHeight = Platform.OS === 'android' ? 60 : 70;
 
-const HeartIcon = (props: any): IconElement => (
+const HomeIcon = (props: any): IconElement => (
     <Icon
         {...props}
-        name='heart-outline'
+        name='home-outline'
     />
 );
+
+const SearchIcon = (props: any): IconElement => (
+    <Icon
+        {...props}
+        name='search-outline'
+    />
+);
+
+const CartIcon = (props: any): IconElement => (
+    <Icon
+        {...props}
+        name='shopping-cart-outline'
+    />
+);
+
+const ProfileIcon = (props: any): IconElement => (
+    <Icon
+        {...props}
+        name='person-outline'
+    />
+);
+
 
 const TabBarNavigation: React.FC = () => {
     return (
@@ -62,10 +84,10 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
             }}
             style={{ paddingBottom: 20 }}
         >
-            <BottomNavigationTab title="Home" icon={HeartIcon} />
-            <BottomNavigationTab title="Browse" icon={HeartIcon} />
-            <BottomNavigationTab title="Cart" icon={HeartIcon} />
-            <BottomNavigationTab title="Profile" icon={HeartIcon} />
+            <BottomNavigationTab title="Home" icon={HomeIcon} />
+            <BottomNavigationTab title="Browse" icon={SearchIcon} />
+            <BottomNavigationTab title="Cart" icon={CartIcon} />
+            <BottomNavigationTab title="Profile" icon={ProfileIcon} />
         </BottomNavigation>
     );
 };
@@ -85,28 +107,50 @@ const navigate = (routeName: any) => {
 };
 
 export const WebNavigation: React.FC = () => {
+    const [currentRoute, setCurrentRoute] = useState('Home');
+
     return (
-        <NavigationContainer ref={navigationRef}>
+        <NavigationContainer 
+            ref={navigationRef}
+            onStateChange={() => {
+                const route = navigationRef.getCurrentRoute();
+                if (route) {
+                    setCurrentRoute(route.name);
+                }
+            }}
+            >
             <View style={styles.webContainer}>
                 <View style={styles.navbar}>
                     <Text style={styles.header}>E-market</Text>
                     <Button
-                        style={styles.navButton}
+                        style={[
+                            styles.navButton,
+                            currentRoute === 'Home' && styles.activeNavButton
+                        ]}
                         onPress={() => navigate('Home')}>
                         {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Home</Text>}
                     </Button>
                     <Button
-                        style={styles.navButton}
+                        style={[
+                            styles.navButton,
+                            currentRoute === 'Browse' && styles.activeNavButton
+                        ]}
                         onPress={() => navigate('Browse')}>
                         {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Browse</Text>}
                     </Button>
                     <Button
-                        style={styles.navButton}
+                        style={[
+                            styles.navButton,
+                            currentRoute === 'Cart' && styles.activeNavButton
+                        ]}
                         onPress={() => navigate('Cart')}>
                         {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Cart</Text>}
                     </Button>
                     <Button
-                        style={styles.navButton}
+                        style={[
+                            styles.navButton,
+                            currentRoute === 'Profile' && styles.activeNavButton
+                        ]}
                         onPress={() => navigate('Profile')}>
                         {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Profile</Text>}
                     </Button>
@@ -165,7 +209,16 @@ const styles = StyleSheet.create({
         width: 200,
         marginRight: 20,
         backgroundColor: 'white',
-        borderRadius: 40
+        borderRadius: 40,
+    },
+    activeNavButton: {
+        borderWidth: 2,
+        borderColor: '#D4FEFC"',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 5,
     },
 });
 
