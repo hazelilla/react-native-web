@@ -6,6 +6,7 @@ import BrowseScreen from '../screens/Browse';
 import CartScreen from '../screens/Cart';
 import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
+import { useMediaQuery } from 'react-responsive';
 
 const SearchIcon = (props: any) => (
     <Icon {...props} name='search-outline' />
@@ -15,48 +16,73 @@ const WebNavigation: React.FC = () => {
     const [currentRoute, setCurrentRoute] = useState('/');
     const [value, setValue] = useState('');
     const navigate = useNavigate();
+    const isBigScreen = useMediaQuery({ minWidth: 1200 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1397 });
+    const isSmallerTablet = useMediaQuery({ minWidth: 768, maxWidth: 1180 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
     const handleNavigation = (route: string) => {
         setCurrentRoute(route);
         navigate(route);
     };
 
+    const NavIcon = ({ isMobile, iconName, text }: { isMobile: boolean, iconName: string, text: string }) => (
+        isMobile ? <Icon name={iconName} width={24} height={24} fill='black' /> : <Text style={{ color: 'black' }}>{text}</Text>
+    );
+
+
     return (
         <View style={styles.webContainer}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <View style={styles.navbar}>
-                    <Text style={styles.header}>E-market</Text>
+                <View style={[styles.navbar, { width: isTablet ? 'auto' : '75%' }]}>
+                    <Text style={[styles.header, { fontSize: isMobile ? 20 : 30 }]}>E-market</Text>
                     <Button
                         style={[
-                            styles.navButton,
+                            {
+                                ...styles.navButton,
+                                width: isMobile ? 15 : isSmallerTablet ? 70 : isTablet ? 150 : 200,
+                                height: isMobile ? 15 : 0,
+                            },
                             currentRoute === '/' && styles.activeNavButton
                         ]}
                         onPress={() => handleNavigation('/')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Home</Text>}
+                        <NavIcon isMobile={isMobile} iconName='heart-outline' text='Home' />
                     </Button>
                     <Button
                         style={[
-                            styles.navButton,
+                            {
+                                ...styles.navButton,
+                                width: isMobile ? 10 : isSmallerTablet ? 70 : isTablet ? 150 : 200,
+                                height: isMobile ? 15 : 0,
+                            },
                             currentRoute === '/browse' && styles.activeNavButton
                         ]}
                         onPress={() => handleNavigation('/browse')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Browse</Text>}
+                        <NavIcon isMobile={isMobile} iconName='grid-outline' text='Browse' />
                     </Button>
                     <Button
                         style={[
-                            styles.navButton,
+                            {
+                                ...styles.navButton,
+                                width: isMobile ? 10 : isSmallerTablet ? 70 : isTablet ? 150 : 200,
+                                height: isMobile ? 15 : 0,
+                            },
                             currentRoute === '/cart' && styles.activeNavButton
                         ]}
                         onPress={() => handleNavigation('/cart')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Cart</Text>}
+                        <NavIcon isMobile={isMobile} iconName='shopping-cart-outline' text='Cart' />
                     </Button>
                     <Button
                         style={[
-                            styles.navButton,
+                            {
+                                ...styles.navButton,
+                                width: isMobile ? 10 : isSmallerTablet ? 70 : isTablet ? 150 : 200,
+                                height: isMobile ? 15 : 0,
+                            },
                             currentRoute === '/profile' && styles.activeNavButton
                         ]}
-                        onPress={() => navigate('/profile')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Profile</Text>}
+                        onPress={() => handleNavigation('/profile')}>
+                        <NavIcon isMobile={isMobile} iconName='person-outline' text='Profile' />
                     </Button>
                 </View>
                 {currentRoute === '/browse' &&
@@ -64,7 +90,10 @@ const WebNavigation: React.FC = () => {
                         placeholder='Search for your grocery...'
                         value={value}
                         onChangeText={nextValue => setValue(nextValue)}
-                        style={{ borderRadius: 80, borderWidth: 2, marginRight: 20, width: '18%' }}
+                        style={{
+                            borderRadius: 80, borderWidth: 2, marginRight: 25,
+                            width: isSmallerTablet ? '32%' : isTablet ? '25%' : '22%'
+                        }}
                         placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
                         accessoryLeft={SearchIcon}
                     />}
@@ -84,8 +113,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        fontSize: 30,
         fontFamily: 'arial',
+        alignSelf: 'center',
         textAlign: 'center',
         fontStyle: 'italic',
         fontWeight: 'bold',
@@ -95,12 +124,11 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         backgroundColor: '#FAF190',
-        width: '80%',
         borderTopRightRadius: 80,
-        borderBottomRightRadius: 80
+        borderBottomRightRadius: 80,
+        justifyContent: 'center'
     },
     navButton: {
-        width: 200,
         marginRight: 20,
         backgroundColor: 'white',
         borderRadius: 40,

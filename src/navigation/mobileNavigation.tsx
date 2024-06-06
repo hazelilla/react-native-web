@@ -27,10 +27,10 @@ const HomeIcon = (props: any): IconElement => (
     />
 );
 
-const SearchIcon = (props: any): IconElement => (
+const CategoryIcon = (props: any): IconElement => (
     <Icon
         {...props}
-        name='search-outline'
+        name='grid-outline'
     />
 );
 
@@ -82,7 +82,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
             style={{ paddingBottom: 20 }}
         >
             <BottomNavigationTab title="Home" icon={HomeIcon} />
-            <BottomNavigationTab title="Browse" icon={SearchIcon} />
+            <BottomNavigationTab title="Browse" icon={CategoryIcon} />
             <BottomNavigationTab title="Cart" icon={CartIcon} />
             <BottomNavigationTab title="Profile" icon={ProfileIcon} />
         </BottomNavigation>
