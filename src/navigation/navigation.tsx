@@ -4,7 +4,7 @@ import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/b
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StyleSheet, Platform, View } from 'react-native';
-import { BottomNavigation, BottomNavigationTab, IconElement, Icon, Button, Text } from '@ui-kitten/components';
+import { BottomNavigation, BottomNavigationTab, IconElement, Icon, Button, Text, Input } from '@ui-kitten/components';
 import BrowseScreen from '../screens/Browse';
 import CartScreen from '../screens/Cart';
 import ProfileScreen from '../screens/Profile';
@@ -26,7 +26,7 @@ const tabBarHeight = Platform.OS === 'android' ? 60 : 70;
 const HomeIcon = (props: any): IconElement => (
     <Icon
         {...props}
-        name='home-outline'
+        name='heart-outline'
     />
 );
 
@@ -108,9 +108,10 @@ const navigate = (routeName: any) => {
 
 export const WebNavigation: React.FC = () => {
     const [currentRoute, setCurrentRoute] = useState('Home');
+    const [value, setValue] = React.useState('');
 
     return (
-        <NavigationContainer 
+        <NavigationContainer
             ref={navigationRef}
             onStateChange={() => {
                 const route = navigationRef.getCurrentRoute();
@@ -118,42 +119,53 @@ export const WebNavigation: React.FC = () => {
                     setCurrentRoute(route.name);
                 }
             }}
-            >
+        >
             <View style={styles.webContainer}>
-                <View style={styles.navbar}>
-                    <Text style={styles.header}>E-market</Text>
-                    <Button
-                        style={[
-                            styles.navButton,
-                            currentRoute === 'Home' && styles.activeNavButton
-                        ]}
-                        onPress={() => navigate('Home')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Home</Text>}
-                    </Button>
-                    <Button
-                        style={[
-                            styles.navButton,
-                            currentRoute === 'Browse' && styles.activeNavButton
-                        ]}
-                        onPress={() => navigate('Browse')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Browse</Text>}
-                    </Button>
-                    <Button
-                        style={[
-                            styles.navButton,
-                            currentRoute === 'Cart' && styles.activeNavButton
-                        ]}
-                        onPress={() => navigate('Cart')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Cart</Text>}
-                    </Button>
-                    <Button
-                        style={[
-                            styles.navButton,
-                            currentRoute === 'Profile' && styles.activeNavButton
-                        ]}
-                        onPress={() => navigate('Profile')}>
-                        {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Profile</Text>}
-                    </Button>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <View style={styles.navbar}>
+                        <Text style={styles.header}>E-market</Text>
+                        <Button
+                            style={[
+                                styles.navButton,
+                                currentRoute === 'Home' && styles.activeNavButton
+                            ]}
+                            onPress={() => navigate('Home')}>
+                            {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Home</Text>}
+                        </Button>
+                        <Button
+                            style={[
+                                styles.navButton,
+                                currentRoute === 'Browse' && styles.activeNavButton
+                            ]}
+                            onPress={() => navigate('Browse')}>
+                            {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Browse</Text>}
+                        </Button>
+                        <Button
+                            style={[
+                                styles.navButton,
+                                currentRoute === 'Cart' && styles.activeNavButton
+                            ]}
+                            onPress={() => navigate('Cart')}>
+                            {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Cart</Text>}
+                        </Button>
+                        <Button
+                            style={[
+                                styles.navButton,
+                                currentRoute === 'Profile' && styles.activeNavButton
+                            ]}
+                            onPress={() => navigate('Profile')}>
+                            {evaProps => <Text {...evaProps} style={{ color: 'black' }}>Profile</Text>}
+                        </Button>
+                    </View>
+                    {currentRoute === 'Browse' &&
+                        <Input
+                        placeholder='Search for your grocery..'
+                        value={value}
+                        onChangeText={nextValue => setValue(nextValue)}
+                        style={{ borderRadius: 80, borderWidth: 2, marginRight: 20, width: '18%' }}
+                        placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
+                        accessoryLeft={SearchIcon}
+                    />}
                 </View>
                 <Stack.Navigator
                     screenOptions={{
@@ -213,7 +225,7 @@ const styles = StyleSheet.create({
     },
     activeNavButton: {
         borderWidth: 2,
-        borderColor: '#D4FEFC"',
+        borderColor: 'rgba(128, 128, 128, 0.16)',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,

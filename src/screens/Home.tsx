@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FlatList, Platform, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { CircularProgressBar, Layout, Text, Button, Radio, CheckBox, CheckBoxProps } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import DateTimePicker from '../component/DateTimePicker';
@@ -28,28 +28,9 @@ const HomeScreen = () => {
         setProgress(progress + 10);
     };
 
-    const baseColors = [
-        "#FEFDE9", "#FEFBD3", "#FDF9BD", "#FBF5AB", "#FAF190"
-    ];
-
-    const colors = Array.from({ length: 100 }, (_, index) => baseColors[index % baseColors.length]);
-
-    const renderItem = ({ item }: { item: any }) => (
-        <View style={{ borderRadius: 100, width: 80, height: 80, backgroundColor: item, marginRight: 25 }} />
-    );
-
     return (
         <Layout style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
-                <View style={styles.flatListContainer}>
-                    <FlatList
-                        data={colors}
-                        renderItem={renderItem}
-                        keyExtractor={(item, index) => index.toString()}
-                        horizontal
-                    />
-                </View>
-
                 <Layout style={{ marginVertical: 50, alignItems: 'center' }}>
 
                     <Text category='h1' >Welcome to Home</Text>
@@ -181,12 +162,7 @@ const styles = StyleSheet.create({
         margin: 2,
         padding: 6,
         backgroundColor: '#3366FF',
-    },
-    flatListContainer: {
-        flex: 1,
-        width: '100%',
-        marginTop: Platform.OS !== 'web' ? 50 : 0
-    },
+    }
 });
 
 export default HomeScreen;
