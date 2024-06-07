@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { FlatList, Keyboard, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import { Layout, Text, Radio, Input, IconElement, Icon } from '@ui-kitten/components';
+import { Layout, Text, Radio, Input, Icon } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
-import { categories } from '../utils/constants';
-import { GroceriesSvg } from '../assets/svgs';
-
+import { categories, subCategories } from '../utils/constants';
+import Groceries from './Groceries.svg';
 
 const BrowseScreen = () => {
   const [checked, setChecked] = React.useState(false);
   const [value, setValue] = React.useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
 
   const SearchIcon = (props: any) => (
     <Icon
@@ -21,22 +22,42 @@ const BrowseScreen = () => {
     "#FEFDE9", "#FEFBD3", "#FDF9BD", "#FBF5AB", "#FAF190"
   ];
 
+  const renderCategories = ({ item }: { item: any }) => {
+    const isSelected = selectedCategory === item;
+    return (
+      <TouchableOpacity
+        style={{ alignItems: 'center', marginRight: 20 }}
+        onPress={() => {
+          setSelectedCategory(item);
+          setSelectedSubCategory(null);
+        }}
+      >
+        <View style={[
+          styles.itemStyle,
+          { borderColor: isSelected ? "#FAF190" : "#FEFBD3" }
+        ]}>
+          {Platform.OS !== 'web' &&
+            <Groceries width={40} height={40} />}
+        </View>
+        <Text category='s2'>{item}</Text>
+      </TouchableOpacity>
+    );
+  };
 
-  const renderCategories = ({ item }: { item: any }) => (
-    <TouchableOpacity style={{ alignItems: 'center', marginRight: 20 }}>
-      <View style={[styles.itemStyle]}>
-        <GroceriesSvg width={40} height={40} />
-      </View>
-      <Text category='s2'>{item}</Text>
-    </TouchableOpacity>
-  );
+  const renderSubCategories = ({ item }: { item: any }) => {
+    const isSelected = selectedSubCategory === item;
+    return (
+      <TouchableOpacity style={[
+        styles.subCategory,
+        { borderColor: isSelected ? "#FAF190" : "#FEFBD3" }
+      ]}
+        onPress={() => setSelectedSubCategory(item)}>
+        <Text category='s2'>{item}</Text>
+      </TouchableOpacity>
+    );
+  };
 
-  const renderSubCategories = ({ item }: { item: any }) => (
-    <TouchableOpacity style={styles.subCategory}>
-      <Text category='s2'>{item}</Text>
-    </TouchableOpacity>
-  );
-
+  const filteredSubCategories = selectedCategory && selectedCategory !== 'All' ? subCategories[selectedCategory] : [];
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -61,18 +82,21 @@ const BrowseScreen = () => {
               keyExtractor={(item, index) => index.toString()}
               horizontal
               contentContainerStyle={{ marginBottom: 40 }}
+              showsHorizontalScrollIndicator={false}
             />
           </View>
-          <View style={styles.flatListContainer}>
-            <FlatList
-              data={Object.values(categories)}
-              renderItem={renderSubCategories}
-              keyExtractor={(item, index) => index.toString()}
-              horizontal
-              contentContainerStyle={{ marginBottom: 40 }}
-            />
-          </View>
-
+          {selectedCategory && selectedCategory !== 'All' && (
+            <View style={styles.subCatContainer}>
+              <FlatList
+                data={filteredSubCategories}
+                renderItem={renderSubCategories}
+                keyExtractor={(item, index) => index.toString()}
+                horizontal
+                contentContainerStyle={{ marginBottom: 40 }}
+                showsHorizontalScrollIndicator={false}
+              />
+            </View>
+          )}
           <Layout style={{ marginVertical: 50, alignItems: 'center' }}>
             <Text category='h1' >Browse Screen</Text>
             <Text category='s1' >Explore what's new</Text>
@@ -103,7 +127,6 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderWidth: 4,
-    borderColor: '#FAF190',
     marginBottom: 6,
     justifyContent: 'center',
     alignItems: 'center'
@@ -112,14 +135,18 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: Platform.OS !== 'web' ? 20 : 0,
   },
+  subCatContainer: {
+    width: '100%',
+    marginTop: -10,
+    marginLeft: 5
+  },
   inputWrapper: {
     marginTop: Platform.OS !== 'web' ? 50 : 0
   },
   subCategory: {
     alignItems: 'center',
     marginRight: 10,
-    borderWidth: 2,
-    borderColor: '#FAF190',
+    borderWidth: 3,
     borderRadius: 80,
     paddingHorizontal: 15,
     paddingVertical: 5

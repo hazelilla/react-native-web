@@ -1,5 +1,5 @@
-import GroceriesSvg from './groceries.svg';
+import GroceriesMobileSvg from './GroceriesMobile.svg';
 
 export {
-    GroceriesSvg,
+    GroceriesMobileSvg,
 };
