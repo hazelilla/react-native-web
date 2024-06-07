@@ -13,7 +13,7 @@ const babelLoaderConfiguration = {
   exclude: [
     {
       and: [
-        // babel will exclude these from transpling
+        // babel will exclude these from transpiling
         path.resolve(appDirectory, 'node_modules'),
         path.resolve(appDirectory, 'ios'),
         path.resolve(appDirectory, 'android'),
@@ -68,6 +68,7 @@ module.exports = argv => {
       filename: '[name].[chunkhash].js',
       sourceMapFilename: '[name].[chunkhash].map',
       chunkFilename: '[id].[chunkhash].js',
+      publicPath: '/', // Ensure the public path is set correctly
     },
     resolve: {
       extensions: [
@@ -114,6 +115,14 @@ module.exports = argv => {
           },
         },
       },
+    },
+    devServer: {
+      historyApiFallback: true, 
+      static: {
+        directory: path.join(appDirectory, 'web/dist'),
+      },
+      compress: true,
+      port: 3000, 
     },
   };
 };

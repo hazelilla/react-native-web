@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { StyleSheet, View } from 'react-native';
 import { Icon, Button, Text, Input } from '@ui-kitten/components';
 import BrowseScreen from '../screens/Browse';
@@ -13,7 +13,7 @@ const SearchIcon = (props: any) => (
 );
 
 const WebNavigation: React.FC = () => {
-    const [currentRoute, setCurrentRoute] = useState('/');
+    const location = useLocation();
     const [value, setValue] = useState('');
     const navigate = useNavigate();
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1397 });
@@ -21,8 +21,9 @@ const WebNavigation: React.FC = () => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
     const [isSearch, setIsSearch] = useState(false);
 
+    const currentRoute = location.pathname;
+
     const handleNavigation = (route: string) => {
-        setCurrentRoute(route);
         navigate(route);
     };
 
