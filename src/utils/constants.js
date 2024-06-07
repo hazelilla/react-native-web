@@ -1,3 +1,22 @@
+import { 
+    GroceriesMobileSvg, 
+    BakingSvg, 
+    BeverageSvg, 
+    DairySvg, 
+    DessertSvg, 
+    FruitsSvg, 
+    GrainsSvg, 
+    HomeCareSvg, 
+    LettuceSvg, 
+    MeatSvg, 
+    OthersSvg, 
+    PersonalSvg, 
+    SauceSvg, 
+    SeaFoodSvg, 
+    SnacksSvg, 
+    VegetablesSvg 
+} from '../assets/svgs';
+
 export const categories = {
     All: 'All',
     Fruits: 'Fruits',
@@ -8,7 +27,7 @@ export const categories = {
     Grains: 'Grains',
     Beverages: 'Beverages',
     Snacks: 'Snacks',
-    Condiments: 'Condiments', 
+    Condiments: 'Condiments',
     Seafood: 'Seafood',
     Desserts: 'Desserts',
     Personal: 'Personal Care',
@@ -26,9 +45,28 @@ export const subCategories = {
     Beverages: ['Tea', 'Coffee', 'Juice', 'Soda', 'Water'],
     Snacks: ['Chips', 'Chocolate', 'Candies', 'Nuts', 'Popcorn', 'Pretzels', 'Crackers', 'Granola Bars'],
     Condiments: ['Ketchup', 'Mustard', 'Mayonnaise', 'Soy Sauce', 'BBQ Sauce'],
-    Seafood: ['Shrimp', 'Salmon', 'Tuna', 'Cod', 'Crab'], 
-    Desserts: ['Ice Cream', 'Cake', 'Cheesecake', 'Pudding', 'Pie'], 
+    Seafood: ['Shrimp', 'Salmon', 'Tuna', 'Cod', 'Crab'],
+    Desserts: ['Ice Cream', 'Cake', 'Cheesecake', 'Pudding', 'Pie'],
     "Personal Care": ['Shampoo', 'Soap', 'Toothpaste', 'Deodorant', 'Lotion', 'Shaving Cream'],
     "Home Care": ['Detergent', 'Cleaner', 'Soap', 'Sponge', 'Trash Bags'],
     Others: ['Stationery', 'Pet Supplies', 'Electronics', 'Tools', 'Party Supplies']
+};
+
+export const categoryIcons = {
+    All: <GroceriesMobileSvg width={40} height={40} />,
+    "Baked Goods": <BakingSvg width={40} height={40} />,
+    Beverages: <BeverageSvg width={40} height={40} />,
+    Dairy: <DairySvg width={40} height={40} />,
+    Desserts: <DessertSvg width={40} height={40} />,
+    Fruits: <FruitsSvg width={40} height={40} />,
+    Grains: <GrainsSvg width={40} height={40} />,
+    "Home Care": <HomeCareSvg width={40} height={40} />,
+    Lettuce: <LettuceSvg width={40} height={40} />,
+    Meat: <MeatSvg width={40} height={40} />,
+    Others: <OthersSvg width={40} height={40} />,
+    "Personal Care": <PersonalSvg width={40} height={40} />,
+    Condiments: <SauceSvg width={40} height={40} />,
+    Seafood: <SeaFoodSvg width={40} height={40} />,
+    Snacks: <SnacksSvg width={40} height={40} />,
+    Veggies: <VegetablesSvg width={40} height={40} />,
 };

@@ -2,15 +2,14 @@ import React, { useState, useRef } from 'react';
 import { FlatList, Keyboard, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { Layout, Text, Radio, Input, Icon, Button } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
-import { categories, subCategories } from '../utils/constants';
-import Groceries from './Groceries.svg';
+import { categories, subCategories, categoryIcons } from '../utils/constants';
+
 
 const BrowseScreen = () => {
   const [checked, setChecked] = useState(false);
   const [value, setValue] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
-
   const categoryFlatListRef = useRef<FlatList>(null);
   const subCategoryFlatListRef = useRef<FlatList>(null);
 
@@ -23,6 +22,8 @@ const BrowseScreen = () => {
 
   const renderCategories = ({ item, index }: { item: any, index: number }) => {
     const isSelected = selectedCategory === item;
+    const CategoryIcon = categoryIcons[item];
+
     return (
       <TouchableOpacity
         style={{ alignItems: 'center', marginRight: 20 }}
@@ -36,10 +37,9 @@ const BrowseScreen = () => {
           styles.itemStyle,
           { borderColor: isSelected ? "#FAF190" : "#FEFBD3" }
         ]}>
-          {Platform.OS !== 'web' &&
-            <Groceries width={40} height={40} />}
+          {Platform.OS !== 'web' && CategoryIcon}
         </View>
-        <Text category='s2'>{item}</Text>
+        <Text category='s2' style={{color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
       </TouchableOpacity>
     );
   };
@@ -55,7 +55,7 @@ const BrowseScreen = () => {
           setSelectedSubCategory(item);
           subCategoryFlatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.5 });
         }}>
-        <Text category='s2'>{item}</Text>
+        <Text category='s2' style={{color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
       </TouchableOpacity>
     );
   };
@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   itemStyle: {
+    backgroundColor: '#FEFDE9',
     borderRadius: 100,
     width: 80,
     height: 80,
