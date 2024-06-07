@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import { FlatList, Keyboard, Platform, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
+import { FlatList, Keyboard, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { Layout, Text, Radio, Input, IconElement, Icon } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
+import { categories } from '../utils/constants';
 import { GroceriesSvg } from '../assets/svgs';
+
 
 const BrowseScreen = () => {
   const [checked, setChecked] = React.useState(false);
   const [value, setValue] = React.useState('');
 
-  const SearchIcon = (props: any): IconElement => (
+  const SearchIcon = (props: any) => (
     <Icon
       {...props}
       name='search-outline'
@@ -19,15 +21,22 @@ const BrowseScreen = () => {
     "#FEFDE9", "#FEFBD3", "#FDF9BD", "#FBF5AB", "#FAF190"
   ];
 
-  const colors = Array.from({ length: 100 }, (_, index) => baseColors[index % baseColors.length]);
 
-  const renderItem = ({ item }: { item: any }) => (
-    <View style={{ alignItems: 'center', marginRight: 20 }}>
-      <View style={[styles.itemStyle, { backgroundColor: item }]} />
-      <Text category='s2'>Category</Text>
-    </View>
-
+  const renderCategories = ({ item }: { item: any }) => (
+    <TouchableOpacity style={{ alignItems: 'center', marginRight: 20 }}>
+      <View style={[styles.itemStyle]}>
+        <GroceriesSvg width={40} height={40} />
+      </View>
+      <Text category='s2'>{item}</Text>
+    </TouchableOpacity>
   );
+
+  const renderSubCategories = ({ item }: { item: any }) => (
+    <TouchableOpacity style={styles.subCategory}>
+      <Text category='s2'>{item}</Text>
+    </TouchableOpacity>
+  );
+
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -47,8 +56,17 @@ const BrowseScreen = () => {
           }
           <View style={styles.flatListContainer}>
             <FlatList
-              data={colors}
-              renderItem={renderItem}
+              data={Object.values(categories)}
+              renderItem={renderCategories}
+              keyExtractor={(item, index) => index.toString()}
+              horizontal
+              contentContainerStyle={{ marginBottom: 40 }}
+            />
+          </View>
+          <View style={styles.flatListContainer}>
+            <FlatList
+              data={Object.values(categories)}
+              renderItem={renderSubCategories}
               keyExtractor={(item, index) => index.toString()}
               horizontal
               contentContainerStyle={{ marginBottom: 40 }}
@@ -58,7 +76,6 @@ const BrowseScreen = () => {
           <Layout style={{ marginVertical: 50, alignItems: 'center' }}>
             <Text category='h1' >Browse Screen</Text>
             <Text category='s1' >Explore what's new</Text>
-
             <Radio
               checked={checked}
               onChange={nextChecked => setChecked(nextChecked)}
@@ -87,7 +104,9 @@ const styles = StyleSheet.create({
     height: 80,
     borderWidth: 4,
     borderColor: '#FAF190',
-    marginBottom: 6
+    marginBottom: 6,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   flatListContainer: {
     width: '100%',
@@ -95,6 +114,15 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     marginTop: Platform.OS !== 'web' ? 50 : 0
+  },
+  subCategory: {
+    alignItems: 'center',
+    marginRight: 10,
+    borderWidth: 2,
+    borderColor: '#FAF190',
+    borderRadius: 80,
+    paddingHorizontal: 15,
+    paddingVertical: 5
   }
 });
 

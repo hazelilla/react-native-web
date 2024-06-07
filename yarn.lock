@@ -3856,6 +3856,7 @@ __metadata:
     react-native-screens: ^3.31.1
     react-native-svg: ^15.3.0
     react-native-svg-transformer: ^1.4.0
+    react-native-svg-uri: ^1.2.3
     react-native-web: ^0.19.12
     react-redux: ^9.1.2
     react-refresh: ^0.14.2
@@ -10346,6 +10347,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-svg-uri@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "react-native-svg-uri@npm:1.2.3"
+  dependencies:
+    xmldom: ^0.1.22
+  peerDependencies:
+    react-native-svg: ^5.3.0
+  checksum: e82311633783303be339389bafc3a44423645c6a80e8f7d667c4b0cc4f5f660943d08d43f710d899bbaf4d581cf0fcd7dc2db7139baf77165a1d53feef9a7a7a
+  languageName: node
+  linkType: hard
+
 "react-native-svg@npm:^15.3.0":
   version: 15.3.0
   resolution: "react-native-svg@npm:15.3.0"
@@ -12666,6 +12678,13 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 147ef9eab0251364e1d2c55338ad0efb15e6913923ccbfdf20f7a8a6cb8f88432bcd7f4d8f66977135bfad35575644f9983201c1a361019594a4e53977bf6d4e
+  languageName: node
+  linkType: hard
+
+"xmldom@npm:^0.1.22":
+  version: 0.1.31
+  resolution: "xmldom@npm:0.1.31"
+  checksum: 3073ca4a096892f86991ad0fce9aa1e874f16a974aa2c0911b1a218922d80fe3762b56aa3a2d9fe4a46d61416193c6dc0839776748b24e0cfb56197babf77a94
   languageName: node
   linkType: hard
 
