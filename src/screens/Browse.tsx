@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FlatList, Keyboard, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import { Layout, Text, Radio, Input, Icon } from '@ui-kitten/components';
+import { Layout, Text, Radio, Input, Icon, Button } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { categories, subCategories } from '../utils/constants';
 import Groceries from './Groceries.svg';
 
 const BrowseScreen = () => {
-  const [checked, setChecked] = React.useState(false);
-  const [value, setValue] = React.useState('');
+  const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+
+  const categoryFlatListRef = useRef<FlatList>(null);
+  const subCategoryFlatListRef = useRef<FlatList>(null);
 
   const SearchIcon = (props: any) => (
     <Icon
@@ -18,11 +21,7 @@ const BrowseScreen = () => {
     />
   );
 
-  const baseColors = [
-    "#FEFDE9", "#FEFBD3", "#FDF9BD", "#FBF5AB", "#FAF190"
-  ];
-
-  const renderCategories = ({ item }: { item: any }) => {
+  const renderCategories = ({ item, index }: { item: any, index: number }) => {
     const isSelected = selectedCategory === item;
     return (
       <TouchableOpacity
@@ -30,6 +29,7 @@ const BrowseScreen = () => {
         onPress={() => {
           setSelectedCategory(item);
           setSelectedSubCategory(null);
+          categoryFlatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.5 });
         }}
       >
         <View style={[
@@ -44,20 +44,33 @@ const BrowseScreen = () => {
     );
   };
 
-  const renderSubCategories = ({ item }: { item: any }) => {
+  const renderSubCategories = ({ item, index }: { item: any, index: number }) => {
     const isSelected = selectedSubCategory === item;
     return (
       <TouchableOpacity style={[
         styles.subCategory,
         { borderColor: isSelected ? "#FAF190" : "#FEFBD3" }
       ]}
-        onPress={() => setSelectedSubCategory(item)}>
+        onPress={() => {
+          setSelectedSubCategory(item);
+          subCategoryFlatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.5 });
+        }}>
         <Text category='s2'>{item}</Text>
       </TouchableOpacity>
     );
   };
 
   const filteredSubCategories = selectedCategory && selectedCategory !== 'All' ? subCategories[selectedCategory] : [];
+
+  const scrollToStart = () => {
+    categoryFlatListRef.current?.scrollToOffset({ offset: 0, animated: true });
+  };
+
+  const scrollToEnd = () => {
+    categoryFlatListRef.current?.scrollToOffset({ offset: categoryListWidth, animated: true });
+  };
+
+  let categoryListWidth = 0;
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -76,18 +89,41 @@ const BrowseScreen = () => {
             </View>
           }
           <View style={styles.flatListContainer}>
+            {Platform.OS === 'web' && (
+              <Button
+                appearance="ghost"
+                status="basic"
+                style={{width: 20}}
+                accessoryLeft={(props) => <Icon {...props} name='arrow-back-outline' />}
+                onPress={scrollToStart}
+              />
+            )}
             <FlatList
+              ref={categoryFlatListRef}
               data={Object.values(categories)}
               renderItem={renderCategories}
               keyExtractor={(item, index) => index.toString()}
               horizontal
-              contentContainerStyle={{ marginBottom: 40 }}
+              contentContainerStyle={{ paddingRight: 20 }}
               showsHorizontalScrollIndicator={false}
+              onLayout={(event) => {
+                categoryListWidth = event.nativeEvent.layout.width;
+              }}
             />
+            {Platform.OS === 'web' && (
+              <Button
+                appearance="ghost"
+                status="basic"
+                style={{width: 20}}
+                accessoryLeft={(props) => <Icon {...props} name='arrow-forward-outline' />}
+                onPress={scrollToEnd}
+              />
+            )}
           </View>
           {selectedCategory && selectedCategory !== 'All' && (
             <View style={styles.subCatContainer}>
               <FlatList
+                ref={subCategoryFlatListRef}
                 data={filteredSubCategories}
                 renderItem={renderSubCategories}
                 keyExtractor={(item, index) => index.toString()}
@@ -132,12 +168,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   flatListContainer: {
-    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: Platform.OS !== 'web' ? 20 : 0,
   },
   subCatContainer: {
     width: '100%',
-    marginTop: -10,
+    marginTop: 15,
     marginLeft: 5
   },
   inputWrapper: {
