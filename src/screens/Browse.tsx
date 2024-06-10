@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Dimensions,
   FlatList,
@@ -20,6 +20,9 @@ const BrowseScreen = () => {
   const subCategoryFlatListRef = useRef<FlatList>(null);
   const numColumns = Math.floor(Dimensions.get('window').width / 170);
 
+  useEffect(() => {
+    setSelectedCategory("All");
+  }, []);
   const SearchIcon = (props: any) => (
     <Icon
       {...props}
