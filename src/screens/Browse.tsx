@@ -1,17 +1,28 @@
 import React, { useState, useRef } from 'react';
-import { FlatList, Keyboard, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import { Layout, Text, Radio, Input, Icon, Button } from '@ui-kitten/components';
+import {
+  Dimensions,
+  FlatList,
+  Keyboard,
+  Platform,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native';
+import { Layout, Text, Input, Icon, Button } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { categories, subCategories, categoryIcons } from '../utils/constants';
-
+import ProductCard from '../component/ProductCard';
+import { FlashList } from "@shopify/flash-list";
 
 const BrowseScreen = () => {
-  const [checked, setChecked] = useState(false);
   const [value, setValue] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+  const [categoryListWidth, setCategoryListWidth] = useState(0);
   const categoryFlatListRef = useRef<FlatList>(null);
   const subCategoryFlatListRef = useRef<FlatList>(null);
+  const numColumns = Math.floor(Dimensions.get('window').width / 170);
+  const products = Array.from({ length: 100 }, (_, i) => ({ id: i + 1, name: `Product ${i + 1}` }));
 
   const SearchIcon = (props: any) => (
     <Icon
@@ -20,6 +31,11 @@ const BrowseScreen = () => {
     />
   );
 
+  const renderProduct = ({ item, index }: { item: any; index: number }) => (
+    <ProductCard index={index} numColumns={numColumns} />
+  );
+  
+  
   const renderCategories = ({ item, index }: { item: any, index: number }) => {
     const isSelected = selectedCategory === item;
     const CategoryIcon = categoryIcons[item];
@@ -39,7 +55,7 @@ const BrowseScreen = () => {
         ]}>
           {Platform.OS !== 'web' && CategoryIcon}
         </View>
-        <Text category='s2' style={{color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
+        <Text category='s2' style={{ color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
       </TouchableOpacity>
     );
   };
@@ -55,7 +71,7 @@ const BrowseScreen = () => {
           setSelectedSubCategory(item);
           subCategoryFlatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0.5 });
         }}>
-        <Text category='s2' style={{color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
+        <Text category='s2' style={{ color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
       </TouchableOpacity>
     );
   };
@@ -70,12 +86,9 @@ const BrowseScreen = () => {
     categoryFlatListRef.current?.scrollToOffset({ offset: categoryListWidth, animated: true });
   };
 
-  let categoryListWidth = 0;
-
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+   
       <Layout style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
           {Platform.OS !== 'web' &&
             <View style={styles.inputWrapper}>
               <Input
@@ -93,7 +106,7 @@ const BrowseScreen = () => {
               <Button
                 appearance="ghost"
                 status="basic"
-                style={{width: 20}}
+                style={{ width: 20 }}
                 accessoryLeft={(props) => <Icon {...props} name='arrow-back-outline' />}
                 onPress={scrollToStart}
               />
@@ -107,14 +120,14 @@ const BrowseScreen = () => {
               contentContainerStyle={{ paddingRight: 20 }}
               showsHorizontalScrollIndicator={false}
               onLayout={(event) => {
-                categoryListWidth = event.nativeEvent.layout.width;
+                setCategoryListWidth(event.nativeEvent.layout.width);
               }}
             />
             {Platform.OS === 'web' && (
               <Button
                 appearance="ghost"
                 status="basic"
-                style={{width: 20}}
+                style={{ width: 20 }}
                 accessoryLeft={(props) => <Icon {...props} name='arrow-forward-outline' />}
                 onPress={scrollToEnd}
               />
@@ -133,20 +146,18 @@ const BrowseScreen = () => {
               />
             </View>
           )}
-          <Layout style={{ marginVertical: 50, alignItems: 'center' }}>
-            <Text category='h1' >Browse Screen</Text>
-            <Text category='s1' >Explore what's new</Text>
-            <Radio
-              checked={checked}
-              onChange={nextChecked => setChecked(nextChecked)}
-              style={{ marginTop: 20 }}
-            >
-              {`Checked: ${checked}`}
-            </Radio>
+          <Layout style={{alignItems: 'center',  flex: 1}}>
+            <FlatList
+              data={products}
+              renderItem={renderProduct}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={numColumns}
+              key={numColumns}
+              contentContainerStyle={styles.productsContainer}
+            />
           </Layout>
-        </ScrollView>
       </Layout>
-    </TouchableWithoutFeedback>
+  
   );
 };
 
@@ -188,7 +199,10 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     paddingHorizontal: 15,
     paddingVertical: 5
-  }
+  },
+  productsContainer: {
+    paddingHorizontal: 5,
+  },
 });
 
 export default BrowseScreen;
