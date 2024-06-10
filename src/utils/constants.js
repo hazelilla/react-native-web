@@ -17,6 +17,18 @@ import {
     VegetablesSvg 
 } from '../assets/svgs';
 
+const berryImage = require('../assets/images/berry.png');
+const strawberryImage = require('../assets/images/strawberry.png');
+const cherryImage = require('../assets/images/cherry.png');
+const coconutImage = require('../assets/images/coconut.png');
+const papayaImage = require('../assets/images/papaya.png');
+const apricotImage = require('../assets/images/apricot.png');
+
+
+export const categoryImages = {
+    Fruits: [berryImage, strawberryImage, cherryImage, coconutImage, papayaImage, apricotImage],
+};
+
 export const categories = {
     All: 'All',
     Fruits: 'Fruits',

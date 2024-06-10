@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Layout, Text, Input, Icon, Button } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
-import { categories, subCategories, categoryIcons } from '../utils/constants';
+import { categories, subCategories, categoryIcons, categoryImages } from '../utils/constants';
 import ProductCard from '../component/ProductCard';
 import { FlashList } from "@shopify/flash-list";
 
@@ -23,6 +23,7 @@ const BrowseScreen = () => {
   const subCategoryFlatListRef = useRef<FlatList>(null);
   const numColumns = Math.floor(Dimensions.get('window').width / 170);
   const products = Array.from({ length: 100 }, (_, i) => ({ id: i + 1, name: `Product ${i + 1}` }));
+  const berryImage = require('../assets/images/berry.png');
 
   const SearchIcon = (props: any) => (
     <Icon
@@ -32,10 +33,10 @@ const BrowseScreen = () => {
   );
 
   const renderProduct = ({ item, index }: { item: any; index: number }) => (
-    <ProductCard index={index} numColumns={numColumns} />
+    <ProductCard index={index} numColumns={numColumns} category={selectedCategory || 'All'} />
   );
-  
-  
+
+
   const renderCategories = ({ item, index }: { item: any, index: number }) => {
     const isSelected = selectedCategory === item;
     const CategoryIcon = categoryIcons[item];
@@ -87,77 +88,76 @@ const BrowseScreen = () => {
   };
 
   return (
-   
-      <Layout style={styles.container}>
-          {Platform.OS !== 'web' &&
-            <View style={styles.inputWrapper}>
-              <Input
-                placeholder='Search for your grocery..'
-                value={value}
-                onChangeText={nextValue => setValue(nextValue)}
-                style={{ borderRadius: 80, borderWidth: 2 }}
-                placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
-                accessoryLeft={SearchIcon}
-              />
-            </View>
-          }
-          <View style={styles.flatListContainer}>
-            {Platform.OS === 'web' && (
-              <Button
-                appearance="ghost"
-                status="basic"
-                style={{ width: 20 }}
-                accessoryLeft={(props) => <Icon {...props} name='arrow-back-outline' />}
-                onPress={scrollToStart}
-              />
-            )}
-            <FlatList
-              ref={categoryFlatListRef}
-              data={Object.values(categories)}
-              renderItem={renderCategories}
-              keyExtractor={(item, index) => index.toString()}
-              horizontal
-              contentContainerStyle={{ paddingRight: 20 }}
-              showsHorizontalScrollIndicator={false}
-              onLayout={(event) => {
-                setCategoryListWidth(event.nativeEvent.layout.width);
-              }}
-            />
-            {Platform.OS === 'web' && (
-              <Button
-                appearance="ghost"
-                status="basic"
-                style={{ width: 20 }}
-                accessoryLeft={(props) => <Icon {...props} name='arrow-forward-outline' />}
-                onPress={scrollToEnd}
-              />
-            )}
-          </View>
-          {selectedCategory && selectedCategory !== 'All' && (
-            <View style={styles.subCatContainer}>
-              <FlatList
-                ref={subCategoryFlatListRef}
-                data={filteredSubCategories}
-                renderItem={renderSubCategories}
-                keyExtractor={(item, index) => index.toString()}
-                horizontal
-                contentContainerStyle={{ marginBottom: 40 }}
-                showsHorizontalScrollIndicator={false}
-              />
-            </View>
-          )}
-          <Layout style={{alignItems: 'center',  flex: 1}}>
-            <FlatList
-              data={products}
-              renderItem={renderProduct}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={numColumns}
-              key={numColumns}
-              contentContainerStyle={styles.productsContainer}
-            />
-          </Layout>
+
+    <Layout style={styles.container}>
+      {Platform.OS !== 'web' &&
+        <View style={styles.inputWrapper}>
+          <Input
+            placeholder='Search for your grocery..'
+            value={value}
+            onChangeText={nextValue => setValue(nextValue)}
+            style={{ borderRadius: 80, borderWidth: 2 }}
+            placeholderTextColor={'rgba(128, 128, 128, 0.5)'}
+            accessoryLeft={SearchIcon}
+          />
+        </View>
+      }
+      <View style={styles.flatListContainer}>
+        {Platform.OS === 'web' && (
+          <Button
+            appearance="ghost"
+            status="basic"
+            style={{ width: 20 }}
+            accessoryLeft={(props) => <Icon {...props} name='arrow-back-outline' />}
+            onPress={scrollToStart}
+          />
+        )}
+        <FlatList
+          ref={categoryFlatListRef}
+          data={Object.values(categories)}
+          renderItem={renderCategories}
+          keyExtractor={(item, index) => index.toString()}
+          horizontal
+          contentContainerStyle={{ paddingRight: 20 }}
+          showsHorizontalScrollIndicator={false}
+          onLayout={(event) => {
+            setCategoryListWidth(event.nativeEvent.layout.width);
+          }}
+        />
+        {Platform.OS === 'web' && (
+          <Button
+            appearance="ghost"
+            status="basic"
+            style={{ width: 20 }}
+            accessoryLeft={(props) => <Icon {...props} name='arrow-forward-outline' />}
+            onPress={scrollToEnd}
+          />
+        )}
+      </View>
+      {selectedCategory && selectedCategory !== 'All' && (
+        <View style={styles.subCatContainer}>
+          <FlatList
+            ref={subCategoryFlatListRef}
+            data={filteredSubCategories}
+            renderItem={renderSubCategories}
+            keyExtractor={(item, index) => index.toString()}
+            horizontal
+            contentContainerStyle={{ marginBottom: 40 }}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+      )}
+      <Layout style={{ alignItems: 'center', flex: 1 }}>
+        <FlatList
+          data={categoryImages[selectedCategory || 'All']}
+          renderItem={renderProduct}
+          numColumns={numColumns}
+          key={numColumns}
+          contentContainerStyle={styles.productsContainer}
+        />
       </Layout>
-  
+    </Layout>
+
   );
 };
 
