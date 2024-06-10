@@ -7,16 +7,15 @@ interface ProductCardProps {
     index: number;
     numColumns: number;
     category: string;
+    image: ImageSourcePropType; 
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ index, numColumns, category }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ index, numColumns, category, image }) => {
     const isLastItem = (index + 1) % numColumns === 0;
-    const categoryImagesList = categoryImages[category] || [];
-    const categoryImage = categoryImagesList[index % categoryImagesList.length] || null;
 
     return (
         <Layout style={[styles.container, !isLastItem && styles.marginRight]}>
-            {categoryImage && <Image source={categoryImage} style={styles.image} resizeMode='cover' />}
+            {image && <Image source={image} style={styles.image} resizeMode='cover' />}
             <View style={styles.priceContainer}>
                 <Text category='s1'>4,19€</Text>
                 <TouchableOpacity style={styles.addButton} onPress={undefined}>

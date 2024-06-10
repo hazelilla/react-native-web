@@ -23,10 +23,22 @@ const cherryImage = require('../assets/images/cherry.png');
 const coconutImage = require('../assets/images/coconut.png');
 const papayaImage = require('../assets/images/papaya.png');
 const apricotImage = require('../assets/images/apricot.png');
+const aubergineImage = require('../assets/images/aubergine.png');
+const avocadoImage = require('../assets/images/avocado.png');
+const brocoliImage = require('../assets/images/brocoli.png');
+const celeryImage = require('../assets/images/celery.png');
+const cornImage = require('../assets/images/corn.png');
+const cucumberImage = require('../assets/images/cucumber.png');
+const mushroomImage = require('../assets/images/mushroom.png');
+const onionImage = require('../assets/images/onion.png');
+const parsleyImage = require('../assets/images/parsley.png');
+const pepperImage = require('../assets/images/pepper.png');
+const tomatoImage = require('../assets/images/tomato.png');
 
 
 export const categoryImages = {
     Fruits: [berryImage, strawberryImage, cherryImage, coconutImage, papayaImage, apricotImage],
+    Veggies: [aubergineImage, avocadoImage, brocoliImage, celeryImage, cornImage, cucumberImage, mushroomImage, onionImage, parsleyImage, pepperImage, tomatoImage]
 };
 
 export const categories = {

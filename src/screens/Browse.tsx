@@ -2,17 +2,14 @@ import React, { useState, useRef } from 'react';
 import {
   Dimensions,
   FlatList,
-  Keyboard,
   Platform,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View
 } from 'react-native';
 import { Layout, Text, Input, Icon, Button } from '@ui-kitten/components';
 import { StyleSheet } from 'react-native';
 import { categories, subCategories, categoryIcons, categoryImages } from '../utils/constants';
 import ProductCard from '../component/ProductCard';
-import { FlashList } from "@shopify/flash-list";
 
 const BrowseScreen = () => {
   const [value, setValue] = useState('');
@@ -22,8 +19,6 @@ const BrowseScreen = () => {
   const categoryFlatListRef = useRef<FlatList>(null);
   const subCategoryFlatListRef = useRef<FlatList>(null);
   const numColumns = Math.floor(Dimensions.get('window').width / 170);
-  const products = Array.from({ length: 100 }, (_, i) => ({ id: i + 1, name: `Product ${i + 1}` }));
-  const berryImage = require('../assets/images/berry.png');
 
   const SearchIcon = (props: any) => (
     <Icon
@@ -33,8 +28,14 @@ const BrowseScreen = () => {
   );
 
   const renderProduct = ({ item, index }: { item: any; index: number }) => (
-    <ProductCard index={index} numColumns={numColumns} category={selectedCategory || 'All'} />
+    <ProductCard index={index} numColumns={numColumns} category={selectedCategory || 'All'} image={item} />
   );
+
+  const getAllCategoryImages = () => {
+    return Object.values(categoryImages).flat();
+  };
+
+  const selectedImages = selectedCategory === 'All' ? getAllCategoryImages() : categoryImages[selectedCategory] || [];
 
 
   const renderCategories = ({ item, index }: { item: any, index: number }) => {
@@ -86,7 +87,7 @@ const BrowseScreen = () => {
   const scrollToEnd = () => {
     categoryFlatListRef.current?.scrollToOffset({ offset: categoryListWidth, animated: true });
   };
-
+  console.log('SKDJSKJDS', categoryImages[selectedCategory])
   return (
 
     <Layout style={styles.container}>
@@ -148,13 +149,19 @@ const BrowseScreen = () => {
         </View>
       )}
       <Layout style={{ alignItems: 'center', flex: 1 }}>
-        <FlatList
-          data={categoryImages[selectedCategory || 'All']}
-          renderItem={renderProduct}
-          numColumns={numColumns}
-          key={numColumns}
-          contentContainerStyle={styles.productsContainer}
-        />
+        {selectedImages.length === 0 ?
+          <View style={{ flex: 1, marginTop: 50}}>
+            <Text category='h3' style={{color: '#CCCCCC', textAlign: 'center'}}>Sorry there is no product to show in this category</Text>
+          </View>
+          :
+          <FlatList
+            data={selectedImages}
+            renderItem={renderProduct}
+            numColumns={numColumns}
+            key={numColumns}
+            contentContainerStyle={styles.productsContainer}
+          />
+        }
       </Layout>
     </Layout>
 
