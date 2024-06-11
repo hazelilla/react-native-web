@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Text, Button, Icon } from '@ui-kitten/components';
-import { Dimensions, FlatList, Platform, StyleSheet, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, View } from 'react-native';
 import ProductItem from '../component/ProductItem';
 
 const CartScreen = () => {
@@ -10,16 +10,20 @@ const CartScreen = () => {
   const renderRecommendedItem = ({ item }) => (
     <ProductItem buttonRemoval={true} />
   );
+
   const renderProductItem = ({ item }) => (
     <ProductItem />
   );
-  
+
+  const renderSeparator = () => (
+    <View style={styles.separator} />
+  );
+
   return (
     <Layout style={styles.container}>
       <Text category='h1'>Cart</Text>
       {Platform.OS === 'web' &&
         <Layout style={{ flexDirection: 'row' }}>
-
           <View style={styles.firstBoxWrapper}>
             <Text category='h5' style={{ marginBottom: 20 }}>Recommendations</Text>
             <View style={[styles.boxStyle, { padding: 20 }]}>
@@ -28,19 +32,19 @@ const CartScreen = () => {
                 renderItem={renderRecommendedItem}
                 keyExtractor={item => item.key}
                 scrollEnabled={true}
-                contentContainerStyle={{height: 450}}
+                contentContainerStyle={{ height: 450 }}
               />
             </View>
           </View>
 
           <View style={styles.secondBoxWrapper}>
             <Text category='h3' style={{ marginBottom: 20 }}>Your items</Text>
-
             <View style={[styles.boxStyle, { padding: 20 }]}>
-            <FlatList
+              <FlatList
                 data={productItems}
                 renderItem={renderProductItem}
                 keyExtractor={item => item.key}
+                ItemSeparatorComponent={renderSeparator}
                 scrollEnabled={true}
               />
             </View>
@@ -77,6 +81,11 @@ const styles = StyleSheet.create({
   boxStyle: {
     backgroundColor: "#F7F7F7",
     borderRadius: 10
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    marginVertical: 10
   },
   thirdBoxWrapper: {
     maxWidth: '25%',
