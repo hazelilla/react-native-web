@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StyleSheet, Platform, View } from 'react-native';
 import { BottomNavigation, BottomNavigationTab, IconElement, Icon } from '@ui-kitten/components';
 import BrowseScreen from '../screens/Browse';
-import CartScreen from '../screens/Cart';
+import CartScreen from '../screens/Cart/CartScreen';
 import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
 

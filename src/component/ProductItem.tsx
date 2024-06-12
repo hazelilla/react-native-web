@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { Text } from '@ui-kitten/components';
 import PlusMinusButton from './PlusMinusButton';
-import { categoryImages } from '../utils/constants'; 
+import { categoryImages } from '../utils/constants';
 
 interface ProductItemProps {
     buttonRemoval?: boolean
+    isVertical?: boolean
 }
 
 const getRandomImage = () => {
@@ -15,23 +16,33 @@ const getRandomImage = () => {
     return images[Math.floor(Math.random() * images.length)];
 };
 
-const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical }) => {
     const randomImage = getRandomImage();
     return (
-        <View style={styles.container}>
-            <View style={styles.wrapper}>
-            <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
-                <View style={{ marginLeft: 10 }}>
-                    <Text category='h5'>4,19 €</Text>
-                    <Text numberOfLines={2} style={styles.textStyle}>Box of organic raspberries (125 g), Portugal</Text>
+        <>
+            {!isVertical ?
+
+                <View style={styles.container}>
+                    <View style={styles.wrapper}>
+                        <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
+                        <View style={{ marginLeft: 10 }}>
+                            <Text category='h5'>4,19 €</Text>
+                            <Text numberOfLines={2} style={styles.textStyle}>Box of organic raspberries (125 g), Portugal</Text>
+                        </View>
+                    </View>
+                    {buttonRemoval ?
+                        null
+                        :
+                        <PlusMinusButton />
+                    }
                 </View>
-            </View>
-            {buttonRemoval ?
-                null
                 :
-                <PlusMinusButton />
-            }
-        </View>
+                <View style={{ marginRight: 20 }}>
+                    <Image source={randomImage} style={[styles.imageView, {width: 110, height: 105}]} resizeMode='cover' />
+                    <Text category='s1'>4,19 €</Text>
+                    <Text numberOfLines={2} style={{ maxWidth: 110 }}>Box of organic raspberries (125 g), Portugal</Text>
+                </View>}
+        </>
     );
 };
 

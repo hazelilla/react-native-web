@@ -90,7 +90,6 @@ const BrowseScreen = () => {
   const scrollToEnd = () => {
     categoryFlatListRef.current?.scrollToOffset({ offset: categoryListWidth, animated: true });
   };
-  console.log('SKDJSKJDS', categoryImages[selectedCategory])
   return (
 
     <Layout style={styles.container}>

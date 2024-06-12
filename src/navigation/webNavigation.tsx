@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { StyleSheet, View } from 'react-native';
 import { Icon, Button, Text, Input } from '@ui-kitten/components';
 import BrowseScreen from '../screens/Browse';
-import CartScreen from '../screens/Cart';
+import CartScreen from '../screens/Cart/CartScreen';
 import ProfileScreen from '../screens/Profile';
 import HomeScreen from '../screens/Home';
 import { useMediaQuery } from 'react-responsive';
