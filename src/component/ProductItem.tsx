@@ -7,6 +7,8 @@ import { categoryImages } from '../utils/constants';
 interface ProductItemProps {
     buttonRemoval?: boolean
     isVertical?: boolean
+    customWidth?: any
+    customFontSize?: any
 }
 
 const getRandomImage = () => {
@@ -16,7 +18,7 @@ const getRandomImage = () => {
     return images[Math.floor(Math.random() * images.length)];
 };
 
-const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, customWidth, customFontSize }) => {
     const randomImage = getRandomImage();
     return (
         <>
@@ -26,8 +28,8 @@ const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical }) 
                     <View style={styles.wrapper}>
                         <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
                         <View style={{ marginLeft: 10 }}>
-                            <Text category='h5'>4,19 €</Text>
-                            <Text numberOfLines={2} style={styles.textStyle}>Box of organic raspberries (125 g), Portugal</Text>
+                            <Text category={customFontSize ? customFontSize : 'h5'}>4,19 €</Text>
+                            <Text numberOfLines={2} style={{maxWidth: customWidth ? customWidth : '70%'}}>Box of organic raspberries (125 g), Portugal</Text>
                         </View>
                     </View>
                     {buttonRemoval ?
@@ -63,9 +65,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'orange',
         borderRadius: 15
     },
-    textStyle: {
-        maxWidth: '70%'
-    }
 });
 
 export default ProductItem;
