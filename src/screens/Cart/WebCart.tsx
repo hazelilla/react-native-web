@@ -42,7 +42,18 @@ const WebCart = () => {
                     <Text category='h1' style={{ fontSize: isMobile ? 24 : isTablet ? 28 : 32 }}>Cart</Text>
                     {isMobile &&
                         <>
-                            <Text category='h5' style={{ marginVertical: 20, fontSize: 20 }}>Recommendations</Text>
+                            {
+                                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <Text category='h5' style={{ marginVertical: 20, fontSize: 20 }}>Recommendations</Text>
+                         
+                                <View style={[styles.addressBoxWrapper, styles.boxStyle, 
+                                    { paddingHorizontal: 20, maxWidth: '50%', marginBottom: 20}]}>
+                                    <Icon name="navigation-2-outline" width={20} height={20} />
+                                    <Text numberOfLines={1} style={[styles.address, { maxWidth: 'auto' }]}>
+                                        Suadiye, Bostancı Hatboyu Sk. No:3, 34740 Kadıköy/İstanbul, Turkey
+                                    </Text>
+                                </View>
+                            </View>}
                             <View style={[styles.boxStyle, { padding: 10 }]}>
                                 <FlatList
                                     data={recommendedItems}

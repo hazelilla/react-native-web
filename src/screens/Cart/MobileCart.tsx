@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Text } from '@ui-kitten/components';
+import { Layout, Text, Icon } from '@ui-kitten/components';
 import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import ProductItem from '../../component/ProductItem';
 
@@ -24,7 +24,13 @@ const MobileCart = () => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Text category='h2' style={{ marginTop: 30 }}>Cart</Text>
                 <View>
-                    <Text category='h5' style={{ marginBottom: 20 }}>Recommendations</Text>
+                    <Text category='h5' style={{ marginBottom: 10 }}>Recommendations</Text>
+                    <View style={[styles.addressBoxWrapper, styles.boxStyle]}>
+                        <Icon name="navigation-2-outline" width={20} height={20} />
+                        <Text numberOfLines={1} style={[styles.address, { maxWidth: '80%' }]}>
+                            Suadiye, Bostancı Hatboyu Sk. No:3, 34740 Kadıköy/İstanbul, Turkey
+                        </Text>
+                    </View>
                     <View style={[styles.boxStyle, { padding: 10 }]}>
                         <FlatList
                             data={recommendedItems}
@@ -84,7 +90,17 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         width: '100%',
         justifyContent: 'space-between'
-    }
+    },
+    addressBoxWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 10,
+        padding: 10, maxWidth: '80%', marginBottom: 10
+    },
+    address: {
+        marginLeft: 10,
+        color: "#B2B2B2",
+    },
 });
 
 export default MobileCart;
