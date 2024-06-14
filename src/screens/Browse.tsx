@@ -58,7 +58,7 @@ const BrowseScreen = () => {
           styles.itemStyle,
           { borderColor: isSelected ? "#FAF190" : "#FEFBD3" }
         ]}>
-          {Platform.OS !== 'web' && CategoryIcon}
+          { CategoryIcon}
         </View>
         <Text category='s2' style={{ color: isSelected ? 'black' : '#CCCCCC' }}>{item}</Text>
       </TouchableOpacity>

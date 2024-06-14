@@ -29,7 +29,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, cu
                         <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
                         <View style={{ marginLeft: 10 }}>
                             <Text category={customFontSize ? customFontSize : 'h5'}>4,19 €</Text>
-                            <Text numberOfLines={2} style={{maxWidth: customWidth ? customWidth : '70%'}}>Box of organic raspberries (125 g), Portugal</Text>
+                            <Text numberOfLines={2} style={{ maxWidth: customWidth ? customWidth : '70%' }}>Box of organic raspberries (125 g), Portugal</Text>
                         </View>
                     </View>
                     {buttonRemoval ?
@@ -40,7 +40,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, cu
                 </View>
                 :
                 <View style={{ marginRight: 20 }}>
-                    <Image source={randomImage} style={[styles.imageView, {width: 110, height: 105}]} resizeMode='cover' />
+                    <Image source={randomImage} style={[styles.imageView, { width: 110, height: 105 }]} resizeMode='cover' />
+
+                    <View style={{paddingVertical: 10}}>
+                        <PlusMinusButton />
+                    </View>
+
                     <Text category='s1'>4,19 €</Text>
                     <Text numberOfLines={2} style={{ maxWidth: 110 }}>Box of organic raspberries (125 g), Portugal</Text>
                 </View>}
