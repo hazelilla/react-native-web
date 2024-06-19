@@ -8,7 +8,7 @@ const MobileCart = () => {
     const productItems = Array.from({ length: 4 }, (_, index) => ({ key: `product-${index}` }));
 
     const renderVerticalRecommendedItem = ({ item }) => (
-        <ProductItem buttonRemoval={true} isVertical={true} />
+        <ProductItem buttonRemoval={true} isVertical={true} discount={true}/>
     );
 
     const renderProductItem = ({ item }) => (

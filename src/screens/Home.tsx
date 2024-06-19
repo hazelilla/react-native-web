@@ -16,7 +16,7 @@ const HomeScreen = () => {
     ];
 
     const renderVerticalRecommendedItem = ({ item }) => (
-        <ProductItem buttonRemoval={true} isVertical={true} />
+        <ProductItem buttonRemoval={true} isVertical={true} discount={true}/>
     );
 
     const renderImage = ({ item }) => (

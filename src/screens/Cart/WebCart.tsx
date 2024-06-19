@@ -17,6 +17,7 @@ const WebCart = () => {
             buttonRemoval={true}
             customWidth={isMobile ? '10%' : isSmallerTablet ? '40%' : isTablet ? '50%' : '70%'}
             customFontSize={isMobile ? '10%' : isSmallerTablet ? 'h6' : isTablet ? 'h5' : 'h5'}
+            discount={true}
         />
     );
 
@@ -32,7 +33,7 @@ const WebCart = () => {
     );
 
     const renderVerticalRecommendedItem = ({ item }) => (
-        <ProductItem buttonRemoval={true} isVertical={true} />
+        <ProductItem buttonRemoval={true} isVertical={true}  discount={true}/>
     );
 
     return (
