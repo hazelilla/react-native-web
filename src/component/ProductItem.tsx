@@ -1,8 +1,9 @@
-import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { Text } from '@ui-kitten/components';
 import PlusMinusButton from './PlusMinusButton';
 import { categoryImages } from '../utils/constants';
+import ProductDetailModal from './ProductDetailModal';
 
 interface ProductItemProps {
     buttonRemoval?: boolean
@@ -21,12 +22,24 @@ const getRandomImage = () => {
 
 const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, customWidth, customFontSize, discount }) => {
     const randomImage = getRandomImage();
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const handlePress = () => {
+        setModalVisible(true);
+    };
+
+    const handleClose = () => {
+        setModalVisible(false);
+    };
+    
     return (
         <>
             {!isVertical ?
                 <View style={styles.container}>
                     <View style={styles.wrapper}>
-                        <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
+                        <TouchableOpacity onPress={handlePress}>
+                            <Image source={randomImage} style={styles.imageView} resizeMode='cover' />
+                        </TouchableOpacity>
                         <View style={{ marginLeft: 10 }}>
                             <View style={{ flexDirection: 'row' }}>
                                 <Text
@@ -55,7 +68,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, cu
                 </View>
                 :
                 <View style={{ marginRight: 20 }}>
-                    <Image source={randomImage} style={[styles.imageView, { width: 110, height: 105 }]} resizeMode='cover' />
+                    <TouchableOpacity onPress={handlePress}>
+                        <Image source={randomImage} style={[styles.imageView, { width: 110, height: 105 }]} resizeMode='cover' />
+                    </TouchableOpacity>
 
                     <View style={{ paddingVertical: 10 }}>
                         <PlusMinusButton />
@@ -69,6 +84,14 @@ const ProductItem: React.FC<ProductItemProps> = ({ buttonRemoval, isVertical, cu
                     <Text numberOfLines={2} style={{ maxWidth: 110 }}>Box of organic raspberries (125 g), Portugal</Text>
 
                 </View>}
+
+            <ProductDetailModal
+                visible={modalVisible}
+                onClose={handleClose}
+                image={randomImage}
+                title="Box of organic raspberries (125 g), Portugal"
+                description="Our Box of Organic Raspberries (125 g) from Portugal is a delightful addition to your daily diet. These luscious, vibrant red berries are harvested at the peak of ripeness, ensuring each berry bursts with juicy flavor and natural sweetness. Grown in the sun-kissed fields of Portugal, our raspberries are nurtured with the utmost care and attention, adhering to strict organic farming practices that exclude the use of synthetic pesticides and fertilizers."
+            />
         </>
     );
 };
