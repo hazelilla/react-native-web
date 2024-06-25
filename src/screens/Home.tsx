@@ -16,7 +16,7 @@ const HomeScreen = () => {
     ];
 
     const renderVerticalRecommendedItem = ({ item }) => (
-        <ProductItem buttonRemoval={true} isVertical={true} discount={true}/>
+        <ProductItem buttonRemoval={true} isVertical={true} discount={true} />
     );
 
     const renderImage = ({ item }) => (
@@ -80,7 +80,7 @@ const HomeScreen = () => {
                         {carouselImages.map((_, index) => renderIndicator(index))}
                     </View>
 
-                    <View style={{ marginTop: 20, flex:5, width: '98%'}}>
+                    <View style={{ marginTop: 20, flex: 5, width: '98%' }}>
                         <Text category="h1">Deals</Text>
                         <View style={[styles.boxStyle]}>
                             <FlatList

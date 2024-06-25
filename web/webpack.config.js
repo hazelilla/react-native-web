@@ -81,6 +81,10 @@ module.exports = argv => {
         '.web.tsx',
         '.tsx',
       ],
+      alias: {
+        'react-native': 'react-native-web',
+        'react-native-maps': 'react-native-web-maps'
+    }
     },
     module: {
       rules: [
