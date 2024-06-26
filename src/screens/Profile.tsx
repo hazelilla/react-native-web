@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Text, Button } from '@ui-kitten/components';
-import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import { Layout, Text } from '@ui-kitten/components';
+import { Platform, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 import { requestPermission } from '../utils/permissionUtil';
+import { PERMISSIONS, request, PermissionStatus } from 'react-native-permissions';
+
+export type PermissionType = keyof typeof PERMISSIONS.IOS;
 
 declare global {
   interface Window {
@@ -14,45 +17,44 @@ declare global {
 const ProfileScreen = () => {
   const [location, setLocation] = useState({ latitude: 37.78825, longitude: -122.4324 });
 
-  const requestLocationPermission = async () => {
-    if (Platform.OS === 'web') {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log('Geolocation permission granted');
-            const  latitude  = position.coords.latitude;
-            const longitude = position.coords.longitude; 
-            console.log('Current Position:', position.coords.latitude, position.coords.longitude);
-            setLocation({ latitude, longitude });
-          },
-          (error) => {
-            console.error('Geolocation permission denied', error);
-          }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-      }
-    } else {
-      const permissionStatus = await requestPermission('LOCATION_ALWAYS');
-      if (permissionStatus === 'granted') {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log('Geolocation permission granted');
-            console.log('Current Position:', position.coords);
-          },
-          (error) => {
-            console.error('Geolocation permission denied', error);
-          }
-        );
-      }
-    }
-  };
-
   useEffect(() => {
+    const requestLocationPermission = async () => {
+      if (Platform.OS === 'web') {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              console.log('Geolocation permission granted');
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              console.log('Current Position:', latitude, longitude);
+              setLocation({ latitude, longitude });
+            },
+            (error) => {
+              console.error('Geolocation permission denied', error);
+              setLocation({ latitude: 37.78825, longitude: -122.4324 });
+            }
+          );
+        } else {
+          console.error('Geolocation is not supported by this browser.');
+          setLocation({ latitude: 37.78825, longitude: -122.4324 });
+        }
+      } else {
+        const status = await request(PERMISSIONS.IOS['LOCATION_ALWAYS']);
+
+        if (status === 'granted') {
+          console.log(`Permission LOCATION_ALWAYS granted`);
+        } else {
+          console.log(`Permission LOCATION_ALWAYS denied or restricted`);
+        }
+      }
+    };
+
+    requestLocationPermission();
+
     if (Platform.OS === 'web' && typeof window !== 'undefined') {
       window.initMap = () => {
         const map = new window.google.maps.Map(document.getElementById('map'), {
-          center: { lat: location.latitude, lng: location.longitude },
+          center: { lat: location.latitude || 37.78825, lng: location.longitude || -122.4324 },
           zoom: 8,
         });
       };
@@ -62,22 +64,20 @@ const ProfileScreen = () => {
       script.async = true;
       document.head.appendChild(script);
     }
-  }, []);
+  }, [location.latitude, location.longitude]);
 
   return (
     <Layout style={styles.container}>
       <Text category='h1'>Profile Screen</Text>
-      <TouchableOpacity onPress={requestLocationPermission}>
-        <Text>Request Location Permission</Text>
-      </TouchableOpacity>
+
       {Platform.OS === 'web' ?
         <div id="map" style={styles.mapWeb}></div>
         :
         <MapView
           style={styles.map}
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude:  37.78825,
+            longitude:  -122.4324,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
