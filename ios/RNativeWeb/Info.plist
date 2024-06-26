@@ -50,13 +50,13 @@
 	<false/>
 	
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <string>[REASON]</string>
+  <string>This app needs access to your contacts to enchance communication.</string>
   <key>NSLocationTemporaryUsageDescriptionDictionary</key>
   <dict>
     <key>YOUR-PURPOSE-KEY</key>
-    <string>[REASON]</string>
+    <string>This app needs access to your contacts to enchance communication.</string>
   </dict>
   <key>NSLocationWhenInUseUsageDescription</key>
-  <string>[REASON]</string>
+  <string>This app needs access to your contacts to enchance communication.</string>
 </dict>
 </plist>

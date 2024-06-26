@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Text, Button } from '@ui-kitten/components';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-maps';
+import { requestPermission } from '../utils/permissionUtil';
 
 declare global {
   interface Window {
@@ -11,12 +12,47 @@ declare global {
 }
 
 const ProfileScreen = () => {
-  {Platform.OS === 'web' &&
-    useEffect(() => {
-    if (typeof window !== 'undefined') {
+  const [location, setLocation] = useState({ latitude: 37.78825, longitude: -122.4324 });
+
+  const requestLocationPermission = async () => {
+    if (Platform.OS === 'web') {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log('Geolocation permission granted');
+            const  latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude; 
+            console.log('Current Position:', position.coords.latitude, position.coords.longitude);
+            setLocation({ latitude, longitude });
+          },
+          (error) => {
+            console.error('Geolocation permission denied', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    } else {
+      const permissionStatus = await requestPermission('LOCATION_ALWAYS');
+      if (permissionStatus === 'granted') {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log('Geolocation permission granted');
+            console.log('Current Position:', position.coords);
+          },
+          (error) => {
+            console.error('Geolocation permission denied', error);
+          }
+        );
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (Platform.OS === 'web' && typeof window !== 'undefined') {
       window.initMap = () => {
         const map = new window.google.maps.Map(document.getElementById('map'), {
-          center: { lat: 41.7979, lng: 20.9082 },
+          center: { lat: location.latitude, lng: location.longitude },
           zoom: 8,
         });
       };
@@ -26,12 +62,14 @@ const ProfileScreen = () => {
       script.async = true;
       document.head.appendChild(script);
     }
-  }, []);}
+  }, []);
 
   return (
     <Layout style={styles.container}>
       <Text category='h1'>Profile Screen</Text>
-
+      <TouchableOpacity onPress={requestLocationPermission}>
+        <Text>Request Location Permission</Text>
+      </TouchableOpacity>
       {Platform.OS === 'web' ?
         <div id="map" style={styles.mapWeb}></div>
         :
@@ -45,7 +83,6 @@ const ProfileScreen = () => {
           }}
         />
       }
-
     </Layout>
   );
 };
@@ -62,7 +99,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '40%',
   },
-  mapWeb:{
+  mapWeb: {
     width: '60%',
     height: '90%'
   }
