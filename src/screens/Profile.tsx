@@ -23,6 +23,12 @@ const ProfileScreen = () => {
     longitudeDelta: 0.0421,
   });
 
+  const markerLocations = [
+    { latitude: 41.9981, longitude: 21.4254 }, 
+    { latitude: 42.03, longitude: 21.13 }, 
+    { latitude: 42.04, longitude: 21.08 }
+  ];
+
   const getUserLocation = async () => {
     Geolocation.getCurrentPosition(
       (info) => {
@@ -87,6 +93,18 @@ const ProfileScreen = () => {
           center: { lat: location.latitude || 41.0082, lng: location.longitude || 28.9784 },
           zoom: 8,
         });
+
+        new window.google.maps.Marker({
+          position: { lat: location.latitude, lng: location.longitude },
+          map
+        });
+
+        markerLocations.forEach((marker) => {
+          new window.google.maps.Marker({
+            position: { lat: marker.latitude, lng: marker.longitude },
+            map,
+          });
+        });
       };
 
       const script = document.createElement('script');
@@ -108,6 +126,12 @@ const ProfileScreen = () => {
           region={region}
         >
           <Marker coordinate={location} />
+          {markerLocations.map((marker, index) => (
+            <Marker
+              key={index}
+              coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+            />
+          ))}
         </MapView>
       }
     </Layout>
