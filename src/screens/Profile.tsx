@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Layout, Text } from '@ui-kitten/components';
-import { Platform, StyleSheet } from 'react-native';
+import { Icon, Layout, Text } from '@ui-kitten/components';
+import { Platform, StyleSheet, View } from 'react-native';
 import MapView, { Marker, Region } from 'react-native-maps';
 import { PERMISSIONS, request } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
+import Geocoder from 'react-native-geocoding';
 
+Geocoder.init('AIzaSyCsiO74x3jCBecgqs585kAyV7E_TDc17ZM');
 export type PermissionType = keyof typeof PERMISSIONS.IOS;
 
 declare global {
@@ -22,16 +24,17 @@ const ProfileScreen = () => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+  const [address, setAddress] = useState('');
 
   const markerLocations = [
-    { latitude: 41.9981, longitude: 21.4254 }, 
-    { latitude: 42.03, longitude: 21.13 }, 
+    { latitude: 41.9981, longitude: 21.4254 },
+    { latitude: 42.03, longitude: 21.13 },
     { latitude: 42.04, longitude: 21.08 }
   ];
 
   const getUserLocation = async () => {
     Geolocation.getCurrentPosition(
-      (info) => {
+      async (info) => {
         const newLocation = {
           longitude: info.coords.longitude,
           latitude: info.coords.latitude,
@@ -42,6 +45,15 @@ const ProfileScreen = () => {
           latitude: newLocation.latitude,
           longitude: newLocation.longitude,
         });
+
+        try {
+          const json = await Geocoder.from(newLocation.latitude, newLocation.longitude);
+          const addressComponent = json.results[0].formatted_address;
+          setAddress(addressComponent);
+          console.log('Current Address:', addressComponent);
+        } catch (error) {
+          console.warn('Error in getting address:', error);
+        }
       },
       (error) => {
         console.error('Error getting location', error);
@@ -57,12 +69,21 @@ const ProfileScreen = () => {
       if (Platform.OS === 'web') {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
-            (position) => {
+            async (position) => {
               console.log('Geolocation permission granted');
               const latitude = position.coords.latitude;
               const longitude = position.coords.longitude;
               console.log('Current Position:', latitude, longitude);
               setLocation({ latitude, longitude });
+
+              try {
+                const json = await Geocoder.from(latitude, longitude);
+                const addressComponent = json.results[0].formatted_address;
+                setAddress(addressComponent);
+                console.log('Current Address:', addressComponent);
+              } catch (error) {
+                console.warn('Error in getting address:', error);
+              }
             },
             (error) => {
               console.error('Geolocation permission denied', error);
@@ -116,14 +137,25 @@ const ProfileScreen = () => {
 
   return (
     <Layout style={styles.container}>
-      <Text category='h1'>Profile Screen</Text>
+
+      <View style={[styles.addressBoxWrapper, styles.boxStyle]}>
+        <Icon name="navigation-2-outline" width={20} height={20} />
+        <Text numberOfLines={1} style={[styles.address, { maxWidth: '90%' }]}>
+          {address || 'Suadiye, Bostancı Hatboyu Sk. No:3, 34740 Kadıköy/İstanbul, Turkey'}
+        </Text>
+      </View>
+      
+      <Text category='h5' style={{marginVertical: 20}}>Regions We Serve</Text>
 
       {Platform.OS === 'web' ?
         <div id="map" style={styles.mapWeb}></div>
         :
-       <MapView
+        <MapView
           style={styles.map}
           region={region}
+          showsUserLocation
+          showsMyLocationButton
+          showsCompass
         >
           <Marker coordinate={location} />
           {markerLocations.map((marker, index) => (
@@ -153,7 +185,21 @@ const styles = StyleSheet.create({
   mapWeb: {
     width: '60%',
     height: '90%'
-  }
+  },
+  boxStyle: {
+    backgroundColor: "#F7F7F7",
+    borderRadius: 10,
+  },
+  addressBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 10,
+    padding: 10,
+    marginVertical: 10
+  },
+  address: {
+    marginLeft: 10,
+  },
 });
 
 export default ProfileScreen;
