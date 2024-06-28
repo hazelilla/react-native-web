@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Icon, Layout, Text } from '@ui-kitten/components';
 import { Platform, StyleSheet, View } from 'react-native';
-import MapView, { Marker, Region } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { PERMISSIONS, request } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
@@ -151,11 +151,14 @@ const ProfileScreen = () => {
         <div id="map" style={styles.mapWeb}></div>
         :
         <MapView
+          provider={PROVIDER_GOOGLE}
           style={styles.map}
-          region={region}
+          region={region} 
           showsUserLocation
           showsMyLocationButton
           showsCompass
+          zoomEnabled={true}
+          zoomControlEnabled
         >
           <Marker coordinate={location} />
           {markerLocations.map((marker, index) => (
