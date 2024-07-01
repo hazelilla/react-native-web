@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Icon, Layout, Text, Modal, } from '@ui-kitten/components';
-import { Platform, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, View, Image, TouchableOpacity, Linking } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { PERMISSIONS, request } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
@@ -85,7 +85,6 @@ const ProfileScreen = () => {
     );
   };
 
-
   const handleZoomIn = () => {
     setRegion((prevRegion) => ({
       ...prevRegion,
@@ -102,6 +101,12 @@ const ProfileScreen = () => {
     }));
   };
 
+  const openMapsApp = () => {
+    if (selectedMarker) {
+      const url = `http://maps.apple.com/?daddr=${selectedMarker.latitude},${selectedMarker.longitude}`;
+      Linking.openURL(url);
+    }
+  };
 
   useEffect(() => {
     const requestLocationPermission = async () => {
@@ -237,6 +242,9 @@ const ProfileScreen = () => {
         <Card disabled={true}>
           {selectedMarker && (
             <>
+              <TouchableOpacity onPress={() => setVisible(false)} style={{alignSelf: 'flex-end'}}>
+                <Text style={{fontSize: 25, fontWeight: 'bold'}}>x</Text>
+              </TouchableOpacity>
               <Image
                 source={storeMarker}
                 style={styles.modalImage}
@@ -245,8 +253,8 @@ const ProfileScreen = () => {
                 <Text category='h6'>{selectedMarker.address}</Text>
                 <Text>{selectedMarker.description}</Text>
               </View>
-              <Button onPress={() => setVisible(false)}>
-                Close
+              <Button onPress={openMapsApp}>
+                Start Navigation
               </Button>
             </>
           )}
@@ -316,7 +324,7 @@ const styles = StyleSheet.create({
   },
   zoomButtons: {
     position: 'absolute',
-    right: 20,
+    left: 20,
     bottom: 20,
     flexDirection: 'column',
     backgroundColor: '#fff',
