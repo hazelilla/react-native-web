@@ -53,7 +53,6 @@ const ProfileScreen = () => {
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCsiO74x3jCBecgqs585kAyV7E_TDc17ZM`
       );
       const data = await response.json();
-      console.log(data, 'AAAAAAAA')
       if (data.results && data.results[0]) {
         setAddress(data.results[0].formatted_address);
       }
@@ -103,7 +102,14 @@ const ProfileScreen = () => {
 
   const openMapsApp = () => {
     if (selectedMarker) {
-      const url = `http://maps.apple.com/?daddr=${selectedMarker.latitude},${selectedMarker.longitude}`;
+      let url = '';
+      if (Platform.OS === 'web')
+        url = `https://www.google.com/maps/dir/?api=1&destination=${selectedMarker.latitude},${selectedMarker.longitude}`;
+      else if (Platform.OS === 'ios')
+        url = `http://maps.apple.com/?daddr=${selectedMarker.latitude},${selectedMarker.longitude}`;
+      else
+        url = `http://maps.google.com/?daddr=${selectedMarker.latitude},${selectedMarker.longitude}`;
+
       Linking.openURL(url);
     }
   };
@@ -162,7 +168,7 @@ const ProfileScreen = () => {
             map,
             icon: {
               url: storeMarkerBase64,
-              scaledSize: new window.google.maps.Size(30, 30) // Adjust the size as needed
+              scaledSize: new window.google.maps.Size(30, 30) 
             }
           });
           markerInstance.addListener('click', () => {
