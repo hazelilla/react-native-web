@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Icon, Layout, Text, Modal, } from '@ui-kitten/components';
-import { Platform, StyleSheet, View, Image } from 'react-native';
+import { Platform, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { PERMISSIONS, request } from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
@@ -83,6 +83,23 @@ const ProfileScreen = () => {
       },
       { enableHighAccuracy: Platform.OS === 'ios', timeout: 60000, maximumAge: 1000 }
     );
+  };
+
+
+  const handleZoomIn = () => {
+    setRegion((prevRegion) => ({
+      ...prevRegion,
+      latitudeDelta: prevRegion.latitudeDelta / 2,
+      longitudeDelta: prevRegion.longitudeDelta / 2,
+    }));
+  };
+
+  const handleZoomOut = () => {
+    setRegion((prevRegion) => ({
+      ...prevRegion,
+      latitudeDelta: prevRegion.latitudeDelta * 2,
+      longitudeDelta: prevRegion.longitudeDelta * 2,
+    }));
   };
 
 
@@ -177,30 +194,40 @@ const ProfileScreen = () => {
       {Platform.OS === 'web' ?
         <div id="map" style={styles.mapWeb}></div>
         :
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={styles.map}
-          region={region}
-          showsUserLocation
-          showsMyLocationButton
-          showsCompass
-          zoomEnabled={true}
-          zoomControlEnabled
-        >
-          <Marker coordinate={location} />
-          {markerLocations.map((marker, index) => (
-            <Marker
-              key={index}
-              coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
-              onPress={() => handleMarkerPress(marker)}
-            >
-              <Image
-                source={storeMarker}
-                style={{ width: 50, height: 50 }}
-              />
-            </Marker>
-          ))}
-        </MapView>
+        <>
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={styles.map}
+            region={region}
+            showsUserLocation
+            showsMyLocationButton
+            showsCompass
+            zoomEnabled={true}
+            zoomControlEnabled
+          >
+            <Marker coordinate={location} />
+            {markerLocations.map((marker, index) => (
+              <Marker
+                key={index}
+                coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+                onPress={() => handleMarkerPress(marker)}
+              >
+                <Image
+                  source={storeMarker}
+                  style={{ width: 50, height: 50 }}
+                />
+              </Marker>
+            ))}
+          </MapView>
+          <View style={styles.zoomButtons}>
+            <TouchableOpacity style={styles.zoomButton} onPress={handleZoomIn}>
+              <Text style={styles.zoomButtonText}>+</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.zoomButton} onPress={handleZoomOut}>
+              <Text style={styles.zoomButtonText}>-</Text>
+            </TouchableOpacity>
+          </View>
+        </>
       }
       <Modal
         visible={visible}
@@ -287,6 +314,31 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     cursor: 'pointer',
   },
+  zoomButtons: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  zoomButton: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  zoomButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  }
 });
 
 export default ProfileScreen;
