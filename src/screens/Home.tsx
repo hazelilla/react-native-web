@@ -59,13 +59,7 @@ const HomeScreen = () => {
         <Layout style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
                 <Layout style={{ alignItems: 'center' }}>
-                    {/* <Button onPress={() => analytics.logEvent('custom_event', {
-                        item: 'example_item',
-                        description: 'This is a custom event'
-                        
-                    })}>
-                        SKDHSKJDHKSJHDKSJDKSJKDJKS
-                    </Button> */}
+
                     <FlatList
                         ref={flatListRef}
                         data={carouselImages}
@@ -83,6 +77,12 @@ const HomeScreen = () => {
                             index,
                         })}
                     />
+                    {/* <Button onPress={() => analytics.logEvent('custom_event', {
+                        item: 'example_item',
+                        description: 'This is a custom event'
+                    })}>
+                        SKDHSKJDHKSJHDKSJDKSJKDJKS
+                    </Button> */}
                     <View style={styles.indicatorContainer}>
                         {carouselImages.map((_, index) => renderIndicator(index))}
                     </View>
