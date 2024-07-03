@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ScrollView, View, FlatList, Image, StyleSheet, Dimensions, Platform } from 'react-native';
-import { Layout, Text } from '@ui-kitten/components';
+import { Button, Layout, Text } from '@ui-kitten/components';
 import ProductItem from '../component/ProductItem';
+import { analytics } from '../../firebase';
+import carousel1 from '../assets/images/carousel1.png';
+import carousel2 from '../assets/images/carousel2.png';
+import carousel3 from '../assets/images/carousel3.png';
 
 const HomeScreen = () => {
     const flatListRef = useRef<FlatList | null>(null);
@@ -9,11 +13,7 @@ const HomeScreen = () => {
     const { width: screenWidth } = Dimensions.get('window');
     const recommendedItems = Array.from({ length: 50 }, (_, index) => ({ key: `product-${index}` }));
 
-    const carouselImages = [
-        require('../assets/images/carousel1.png'),
-        require('../assets/images/carousel2.png'),
-        require('../assets/images/carousel3.png'),
-    ];
+    const carouselImages = [carousel1, carousel2, carousel3];
 
     const renderVerticalRecommendedItem = ({ item }) => (
         <ProductItem buttonRemoval={true} isVertical={true} discount={true} />
@@ -59,6 +59,13 @@ const HomeScreen = () => {
         <Layout style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
                 <Layout style={{ alignItems: 'center' }}>
+                    {/* <Button onPress={() => analytics.logEvent('custom_event', {
+                        item: 'example_item',
+                        description: 'This is a custom event'
+                        
+                    })}>
+                        SKDHSKJDHKSJHDKSJDKSJKDJKS
+                    </Button> */}
                     <FlatList
                         ref={flatListRef}
                         data={carouselImages}

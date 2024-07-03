@@ -50,7 +50,7 @@ const ProfileScreen = () => {
   const fetchAddress = async (latitude: number, longitude: number) => {
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCsiO74x3jCBecgqs585kAyV7E_TDc17ZM`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCA6i3Fx2hwCFDkJ--vtHzihYKzLf80YXA`
       );
       const data = await response.json();
       if (data.results && data.results[0]) {
@@ -179,7 +179,7 @@ const ProfileScreen = () => {
       };
 
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCsiO74x3jCBecgqs585kAyV7E_TDc17ZM&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCA6i3Fx2hwCFDkJ--vtHzihYKzLf80YXA&callback=initMap`;
       script.async = true;
       document.head.appendChild(script);
     }

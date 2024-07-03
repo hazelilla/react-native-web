@@ -6,7 +6,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [GMSServices provideAPIKey:@"AIzaSyCsiO74x3jCBecgqs585kAyV7E_TDc17ZM"]; 
+  [GMSServices provideAPIKey:@"AIzaSyCA6i3Fx2hwCFDkJ--vtHzihYKzLf80YXA"]; 
   self.moduleName = @"RNativeWeb";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
