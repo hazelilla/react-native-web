@@ -1,19 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ScrollView, View, FlatList, Image, StyleSheet, Dimensions, Platform } from 'react-native';
+import {
+    ScrollView,
+    View,
+    FlatList,
+    Image,
+    StyleSheet,
+    Dimensions,
+    Platform,
+    TouchableOpacity,
+    Linking
+} from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import ProductItem from '../component/ProductItem';
 import { analytics } from '../../firebase';
 import carousel1 from '../assets/images/carousel1.png';
 import carousel2 from '../assets/images/carousel2.png';
 import carousel3 from '../assets/images/carousel3.png';
+import appStore from '../assets/images/appleStore.png';
+import googlePlay from '../assets/images/playStore.png';
 
 const HomeScreen = () => {
     const flatListRef = useRef<FlatList | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const { width: screenWidth } = Dimensions.get('window');
     const recommendedItems = Array.from({ length: 50 }, (_, index) => ({ key: `product-${index}` }));
-
     const carouselImages = [carousel1, carousel2, carousel3];
+
+    const openAppstore = () => {
+        const storeUrl = 'https://apps.apple.com/us/app/roblox/id431946152';
+        Linking.openURL(storeUrl);
+    };
+
+    const openPlayStore = () => {
+        const storeUrl = 'https://play.google.com/store/apps/details?id=com.roblox.client';
+        Linking.openURL(storeUrl);
+    };
 
     const renderVerticalRecommendedItem = ({ item }) => (
         <ProductItem buttonRemoval={true} isVertical={true} discount={true} />
@@ -59,7 +80,6 @@ const HomeScreen = () => {
         <Layout style={styles.container}>
             <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
                 <Layout style={{ alignItems: 'center' }}>
-
                     <FlatList
                         ref={flatListRef}
                         data={carouselImages}
@@ -100,6 +120,30 @@ const HomeScreen = () => {
                             />
                         </View>
                     </View>
+                    <View style={{ marginTop: 20, flex: 5, width: '98%' }}>
+                        <Text category="h1">Deals</Text>
+                        <View style={[styles.boxStyle]}>
+                            <FlatList
+                                data={recommendedItems}
+                                renderItem={renderVerticalRecommendedItem}
+                                keyExtractor={(item, index) => index.toString()}
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                                style={{ width: '100%' }}
+                            />
+                        </View>
+                    </View>
+
+                    {Platform.OS === 'web' &&
+                        <>
+                            <TouchableOpacity style={{ marginTop: 20 }} onPress={openAppstore}>
+                                <Image source={appStore} style={styles.webImage} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ marginBottom: 20 }} onPress={openPlayStore}>
+                                <Image source={googlePlay} style={styles.webImage} />
+                            </TouchableOpacity>
+                        </>
+                    }
                 </Layout>
             </ScrollView>
         </Layout>
@@ -132,6 +176,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
     },
+    webImage: {
+        width: 250,
+        height: 50,
+        marginTop: 20,
+        resizeMode: 'contain'
+    }
 });
 
 export default HomeScreen;
