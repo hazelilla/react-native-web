@@ -18,6 +18,9 @@ import carousel2 from '../assets/images/carousel2.png';
 import carousel3 from '../assets/images/carousel3.png';
 import appStore from '../assets/images/appleStore.png';
 import googlePlay from '../assets/images/playStore.png';
+import instagram from '../assets/images/instagram.png';
+import facebook from '../assets/images/facebook.png';
+import linkedin from '../assets/images/linkedin.png';
 
 const HomeScreen = () => {
     const flatListRef = useRef<FlatList | null>(null);
@@ -39,6 +42,21 @@ const HomeScreen = () => {
     const renderVerticalRecommendedItem = ({ item }) => (
         <ProductItem buttonRemoval={true} isVertical={true} discount={true} />
     );
+
+    const openInsta = () => {
+        const profileLink = 'https://www.instagram.com/hazelilla/';
+        Linking.openURL(profileLink);
+    };
+
+    const openFacebook = () => {
+        const profileLink = 'https://www.facebook.com/elalilla98';
+        Linking.openURL(profileLink);
+    };
+
+    const openLinkedin = () => {
+        const profileLink = 'https://www.linkedin.com/in/elanur-lilai-146b51233/';
+        Linking.openURL(profileLink);
+    };
 
     const renderImage = ({ item }) => (
         <Image
@@ -144,6 +162,17 @@ const HomeScreen = () => {
                             </TouchableOpacity>
                         </>
                     }
+                    <View style={styles.wrapper}>
+                        <TouchableOpacity style={styles.touchable} onPress={openInsta}>
+                            <Image source={instagram} style={styles.image} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchable} onPress={openFacebook}>
+                            <Image source={facebook} style={styles.image} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.touchable} onPress={openLinkedin}>
+                            <Image source={linkedin} style={styles.image} />
+                        </TouchableOpacity>
+                    </View>
                 </Layout>
             </ScrollView>
         </Layout>
@@ -176,11 +205,29 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
     },
+    image: {
+        width: 250,
+        height: 50,
+        resizeMode: 'contain'
+    },
     webImage: {
         width: 250,
         height: 50,
         marginTop: 20,
         resizeMode: 'contain'
+    },
+    wrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 20,
+        marginTop: 10
+    },
+    touchable: {
+        width: 100, 
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+        borderRadius: 10
     }
 });
 
