@@ -8,14 +8,69 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RNativeWebTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNativeWebTests.m */; };
+		0B21B84F3B22465D82780CEE /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AAACC79204480BA043171 /* Roboto-LightItalic.ttf */; };
+		0B558F29BB82498B99C5150E /* apricot.png in Resources */ = {isa = PBXBuildFile; fileRef = C696180FF4824F3FB3B62043 /* apricot.png */; };
 		0C80B921A6F3F58F76C31292 /* libPods-RNativeWeb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RNativeWeb.a */; };
+		0FC397E30A1C46D18713CAB7 /* berry.png in Resources */ = {isa = PBXBuildFile; fileRef = C58F63A56123489A974041DC /* berry.png */; };
+		11870A6633404F7087F47308 /* fruits.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2F9A6EEB09AB4A55932A6754 /* fruits.svg */; };
+		121A3BF1C90C4DED8925F108 /* grains.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7334B0F8557D4643A3892109 /* grains.svg */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1E04B4CAB54F40DAB4CC29B9 /* carousel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4961FFE0FE974DC0896AEE24 /* carousel2.png */; };
+		1F5EEBE0231D407BB30E21CA /* celery.png in Resources */ = {isa = PBXBuildFile; fileRef = B49A4815E8414304B8795C1D /* celery.png */; };
+		1F6C57C1DD9444269FEAAB89 /* beverage.svg in Resources */ = {isa = PBXBuildFile; fileRef = DA548160E4DA446C848606A6 /* beverage.svg */; };
+		2391781FAFC64922813EA97D /* linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D2B3729EE0407AA874B117 /* linkedin.png */; };
+		304D682A92594E06BF190A4A /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 505932C645E74D309996501B /* Roboto-Medium.ttf */; };
+		3094F3C228AE464281A67C28 /* homecare.svg in Resources */ = {isa = PBXBuildFile; fileRef = C9F64DD8FDB04F428BECDDFC /* homecare.svg */; };
+		321453A8CFCF4680B7C7F19B /* tomato.png in Resources */ = {isa = PBXBuildFile; fileRef = 426AFC466586417791DA3E81 /* tomato.png */; };
+		3257740A5780413D9BBEFDCA /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7D0F3B906ED4FB1904769C7 /* Roboto-BoldItalic.ttf */; };
+		358AFEFCB6154CCC9B7E2B4D /* corn.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA2274C4664A44944646D3 /* corn.png */; };
+		3615C1B4A2924249AFCE3C21 /* vegetables.svg in Resources */ = {isa = PBXBuildFile; fileRef = B60F25FA54DD4645A1BAEE96 /* vegetables.svg */; };
+		3A5025F6062F4B3B9C3139F9 /* papaya.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F264587E98475385836013 /* papaya.png */; };
+		3ABED87BF09F4FFFACBFD96E /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA11D71DC99540E3AE5BBD3E /* Roboto-Light.ttf */; };
+		4A7EF70B7D3E47CCB8D64EE6 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 35516A079F1649F2B3EEC329 /* facebook.png */; };
+		54C4388229074200B6F20CFB /* parsley.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EE8899C4B1D45F3A5725F03 /* parsley.png */; };
+		5E2C437D4CD54ACFA56CC898 /* coconut.png in Resources */ = {isa = PBXBuildFile; fileRef = 30AF78A876544851A4E046C7 /* coconut.png */; };
+		5E7AA6D073364AC2ABB4D9DC /* lettuce.svg in Resources */ = {isa = PBXBuildFile; fileRef = EF85E3DA5AE446628E298D71 /* lettuce.svg */; };
+		620FDC16328641C38A7D89C7 /* carousel1.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBEB6243AE048869CD31552 /* carousel1.png */; };
 		6739CF942C354ED4000A156E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6739CF932C354ED3000A156E /* GoogleService-Info.plist */; };
+		68CA219100F0412EA000B52A /* dessert.svg in Resources */ = {isa = PBXBuildFile; fileRef = 86705CEDBA764619BB325CCB /* dessert.svg */; };
 		7699B88040F8A987B510C191 /* libPods-RNativeWeb-RNativeWebTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RNativeWeb-RNativeWebTests.a */; };
+		79495717A7F14C658E0AA521 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9CCCE13E0DE4AAC969A2C27 /* Roboto-ThinItalic.ttf */; };
+		7C60F108C8724567A97505C2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 345956A7471C48CA96927AD6 /* Roboto-Regular.ttf */; };
+		7F2304BB2DC546A792FBCC1F /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = 568A716507C248CF8591E14C /* store.png */; };
+		816C54C3B0A844DD952D457B /* playStore.png in Resources */ = {isa = PBXBuildFile; fileRef = E30A679DB6DF497B98804AE7 /* playStore.png */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		84BA6F4B6A734B0F828ECCC8 /* meat.svg in Resources */ = {isa = PBXBuildFile; fileRef = F814446B90F14C13A36B82DB /* meat.svg */; };
 		879E69200D7D88D6973AB3FF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BC5062D84F4139AC185DE267 /* PrivacyInfo.xcprivacy */; };
+		87DF75769B3643B98173FC23 /* dairy.svg in Resources */ = {isa = PBXBuildFile; fileRef = 77B24E49B42E4063A2232A15 /* dairy.svg */; };
+		9087C5C1D4BB44419F178E39 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC44426BBD4F4CA8B9F88FCE /* Roboto-MediumItalic.ttf */; };
+		986412F043A7475DA59A9269 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 72C8CF3EBEFB486D9C9D1AE0 /* instagram.png */; };
+		9CE8AAE996434A798B323EAE /* avocado.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C22588D6248A2929CC4BA /* avocado.png */; };
+		A3B0F3D115DF42AA904FDE3E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A6A0AABAD245C19B4BFF1A /* Roboto-Thin.ttf */; };
+		A709B07B4DFA414C8943C209 /* others.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5637BF0D524A4D22B6A68DAA /* others.svg */; };
+		A8A09466257C45F7A84977A7 /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = B7124A8F54BC45148F6F51BB /* strawberry.png */; };
+		AC66E6AFF8B44C3B944BE06E /* cherry.png in Resources */ = {isa = PBXBuildFile; fileRef = 2032E2FCB1CD4758AFC6C1FD /* cherry.png */; };
+		B63DF36C95B14EAC8E3B0BFD /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B071596C0B1C4E20BEAFA7F8 /* Roboto-Bold.ttf */; };
+		BD1FC56B64A94208943C4AB9 /* onion.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F96DBB2A84467791377AF7 /* onion.png */; };
+		C81B9CCD8947474C88AD0630 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 607BF87E5F6448F3B7D1E99A /* index.js */; };
+		D18011E5A415471986AFB82B /* reject.svg in Resources */ = {isa = PBXBuildFile; fileRef = FC4E7D7EAF88484781DD09D9 /* reject.svg */; };
+		D2114A6F7BB84734A7352D1A /* cucumber.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8915AA3C3E49A1A236B0FD /* cucumber.png */; };
+		D409198C6225469EA69B9B12 /* aubergine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9682411D777F4A66946B0E5B /* aubergine.png */; };
+		D4D4E52265C24C398972E6FF /* baking.svg in Resources */ = {isa = PBXBuildFile; fileRef = DB4BF2C067A94FD18D0C8314 /* baking.svg */; };
+		D5EF05C4532047E48966FDFB /* seafood.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2FF6B94364DB4AA581787F64 /* seafood.svg */; };
+		D65ED22B37964970A5F2DE49 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9341D23D7BE14302B8C99DD0 /* Roboto-BlackItalic.ttf */; };
+		D7C622A66496455796C07111 /* carousel3.png in Resources */ = {isa = PBXBuildFile; fileRef = E2887054AAFC4BE3A00A054A /* carousel3.png */; };
+		D837902C5AE84FC8AFBF0F51 /* brocoli.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B1B13815BD4BBBAE65645B /* brocoli.png */; };
+		DB18316520E74BC0B6017E25 /* appleStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F687A150034581B63F8184 /* appleStore.png */; };
+		DCCDB2283E2F4DF5A72F6638 /* GroceriesMobile.svg in Resources */ = {isa = PBXBuildFile; fileRef = E799430CC775488A996B1AE5 /* GroceriesMobile.svg */; };
+		DD2EDDFC10C24A62B4891D1D /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C63E21528AFD49C29D2507D0 /* Roboto-Italic.ttf */; };
+		E075FF968B0B4078B7864FC1 /* personal.svg in Resources */ = {isa = PBXBuildFile; fileRef = EFDFB4A9529940F5A4C65E75 /* personal.svg */; };
+		F30595B8B47A4336B0CF6A78 /* sauce.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0B91DE4C56C74BE199A41247 /* sauce.svg */; };
+		F3C409B37A33411F85EBC0A2 /* mushroom.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD1664261B34CAD86B3CB26 /* mushroom.png */; };
+		F7E7659BB750408FBED9A668 /* snack.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDDBEE810A42BA9FD8C440 /* snack.svg */; };
+		FEC5AC385A744182889D13F5 /* pepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 38C785012C27494394330FF2 /* pepper.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +87,8 @@
 		00E356EE1AD99517003FC87E /* RNativeWebTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNativeWebTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RNativeWebTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNativeWebTests.m; sourceTree = "<group>"; };
+		0B91DE4C56C74BE199A41247 /* sauce.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = sauce.svg; path = ../src/assets/svgs/sauce.svg; sourceTree = "<group>"; };
+		0EE8899C4B1D45F3A5725F03 /* parsley.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = parsley.png; path = ../src/assets/images/parsley.png; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RNativeWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNativeWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RNativeWeb/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = RNativeWeb/AppDelegate.mm; sourceTree = "<group>"; };
@@ -40,15 +97,68 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNativeWeb/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RNativeWeb/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-RNativeWeb-RNativeWebTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNativeWeb-RNativeWebTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2032E2FCB1CD4758AFC6C1FD /* cherry.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = cherry.png; path = ../src/assets/images/cherry.png; sourceTree = "<group>"; };
+		2DBDDBEE810A42BA9FD8C440 /* snack.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = snack.svg; path = ../src/assets/svgs/snack.svg; sourceTree = "<group>"; };
+		2F9A6EEB09AB4A55932A6754 /* fruits.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = fruits.svg; path = ../src/assets/svgs/fruits.svg; sourceTree = "<group>"; };
+		2FF6B94364DB4AA581787F64 /* seafood.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = seafood.svg; path = ../src/assets/svgs/seafood.svg; sourceTree = "<group>"; };
+		30AF78A876544851A4E046C7 /* coconut.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = coconut.png; path = ../src/assets/images/coconut.png; sourceTree = "<group>"; };
+		345956A7471C48CA96927AD6 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		35516A079F1649F2B3EEC329 /* facebook.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.png; path = ../src/assets/images/facebook.png; sourceTree = "<group>"; };
+		38C785012C27494394330FF2 /* pepper.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = pepper.png; path = ../src/assets/images/pepper.png; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RNativeWeb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNativeWeb.debug.xcconfig"; path = "Target Support Files/Pods-RNativeWeb/Pods-RNativeWeb.debug.xcconfig"; sourceTree = "<group>"; };
+		426AFC466586417791DA3E81 /* tomato.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = tomato.png; path = ../src/assets/images/tomato.png; sourceTree = "<group>"; };
+		45F687A150034581B63F8184 /* appleStore.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = appleStore.png; path = ../src/assets/images/appleStore.png; sourceTree = "<group>"; };
+		4961FFE0FE974DC0896AEE24 /* carousel2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = carousel2.png; path = ../src/assets/images/carousel2.png; sourceTree = "<group>"; };
+		4C2AAACC79204480BA043171 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		505932C645E74D309996501B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		51F264587E98475385836013 /* papaya.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = papaya.png; path = ../src/assets/images/papaya.png; sourceTree = "<group>"; };
+		55A6A0AABAD245C19B4BFF1A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../src/assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		5637BF0D524A4D22B6A68DAA /* others.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = others.svg; path = ../src/assets/svgs/others.svg; sourceTree = "<group>"; };
+		568A716507C248CF8591E14C /* store.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = store.png; path = ../src/assets/images/store.png; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RNativeWeb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNativeWeb.release.xcconfig"; path = "Target Support Files/Pods-RNativeWeb/Pods-RNativeWeb.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-RNativeWeb-RNativeWebTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNativeWeb-RNativeWebTests.debug.xcconfig"; path = "Target Support Files/Pods-RNativeWeb-RNativeWebTests/Pods-RNativeWeb-RNativeWebTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-RNativeWeb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNativeWeb.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		607BF87E5F6448F3B7D1E99A /* index.js */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = index.js; path = ../src/assets/svgs/index.js; sourceTree = "<group>"; };
 		6739CF932C354ED3000A156E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		72C8CF3EBEFB486D9C9D1AE0 /* instagram.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = instagram.png; path = ../src/assets/images/instagram.png; sourceTree = "<group>"; };
+		7334B0F8557D4643A3892109 /* grains.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = grains.svg; path = ../src/assets/svgs/grains.svg; sourceTree = "<group>"; };
+		77B24E49B42E4063A2232A15 /* dairy.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = dairy.svg; path = ../src/assets/svgs/dairy.svg; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RNativeWeb/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		86705CEDBA764619BB325CCB /* dessert.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = dessert.svg; path = ../src/assets/svgs/dessert.svg; sourceTree = "<group>"; };
+		87B1B13815BD4BBBAE65645B /* brocoli.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = brocoli.png; path = ../src/assets/images/brocoli.png; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-RNativeWeb-RNativeWebTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNativeWeb-RNativeWebTests.release.xcconfig"; path = "Target Support Files/Pods-RNativeWeb-RNativeWebTests/Pods-RNativeWeb-RNativeWebTests.release.xcconfig"; sourceTree = "<group>"; };
+		9341D23D7BE14302B8C99DD0 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../src/assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		93D2B3729EE0407AA874B117 /* linkedin.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = linkedin.png; path = ../src/assets/images/linkedin.png; sourceTree = "<group>"; };
+		9682411D777F4A66946B0E5B /* aubergine.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = aubergine.png; path = ../src/assets/images/aubergine.png; sourceTree = "<group>"; };
+		AA8915AA3C3E49A1A236B0FD /* cucumber.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = cucumber.png; path = ../src/assets/images/cucumber.png; sourceTree = "<group>"; };
+		AC44426BBD4F4CA8B9F88FCE /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../src/assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B071596C0B1C4E20BEAFA7F8 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		B49A4815E8414304B8795C1D /* celery.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = celery.png; path = ../src/assets/images/celery.png; sourceTree = "<group>"; };
+		B60F25FA54DD4645A1BAEE96 /* vegetables.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = vegetables.svg; path = ../src/assets/svgs/vegetables.svg; sourceTree = "<group>"; };
+		B7124A8F54BC45148F6F51BB /* strawberry.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = strawberry.png; path = ../src/assets/images/strawberry.png; sourceTree = "<group>"; };
+		B9CCCE13E0DE4AAC969A2C27 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B9F96DBB2A84467791377AF7 /* onion.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = onion.png; path = ../src/assets/images/onion.png; sourceTree = "<group>"; };
+		BA11D71DC99540E3AE5BBD3E /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
 		BC5062D84F4139AC185DE267 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = RNativeWeb/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C58F63A56123489A974041DC /* berry.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = berry.png; path = ../src/assets/images/berry.png; sourceTree = "<group>"; };
+		C63E21528AFD49C29D2507D0 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		C696180FF4824F3FB3B62043 /* apricot.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = apricot.png; path = ../src/assets/images/apricot.png; sourceTree = "<group>"; };
+		C9F64DD8FDB04F428BECDDFC /* homecare.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = homecare.svg; path = ../src/assets/svgs/homecare.svg; sourceTree = "<group>"; };
+		D7D0F3B906ED4FB1904769C7 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../src/assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		DA548160E4DA446C848606A6 /* beverage.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = beverage.svg; path = ../src/assets/svgs/beverage.svg; sourceTree = "<group>"; };
+		DB4BF2C067A94FD18D0C8314 /* baking.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = baking.svg; path = ../src/assets/svgs/baking.svg; sourceTree = "<group>"; };
+		E2887054AAFC4BE3A00A054A /* carousel3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = carousel3.png; path = ../src/assets/images/carousel3.png; sourceTree = "<group>"; };
+		E30A679DB6DF497B98804AE7 /* playStore.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = playStore.png; path = ../src/assets/images/playStore.png; sourceTree = "<group>"; };
+		E799430CC775488A996B1AE5 /* GroceriesMobile.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = GroceriesMobile.svg; path = ../src/assets/svgs/GroceriesMobile.svg; sourceTree = "<group>"; };
+		E98C22588D6248A2929CC4BA /* avocado.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = avocado.png; path = ../src/assets/images/avocado.png; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EF85E3DA5AE446628E298D71 /* lettuce.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = lettuce.svg; path = ../src/assets/svgs/lettuce.svg; sourceTree = "<group>"; };
+		EFDFB4A9529940F5A4C65E75 /* personal.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = personal.svg; path = ../src/assets/svgs/personal.svg; sourceTree = "<group>"; };
+		F814446B90F14C13A36B82DB /* meat.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = meat.svg; path = ../src/assets/svgs/meat.svg; sourceTree = "<group>"; };
+		F9AA2274C4664A44944646D3 /* corn.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = corn.png; path = ../src/assets/images/corn.png; sourceTree = "<group>"; };
+		FC4E7D7EAF88484781DD09D9 /* reject.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = reject.svg; path = ../src/assets/svgs/reject.svg; sourceTree = "<group>"; };
+		FCBEB6243AE048869CD31552 /* carousel1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = carousel1.png; path = ../src/assets/images/carousel1.png; sourceTree = "<group>"; };
+		FFD1664261B34CAD86B3CB26 /* mushroom.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = mushroom.png; path = ../src/assets/images/mushroom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +223,69 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		48AD072C47284B4780EAA91F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9341D23D7BE14302B8C99DD0 /* Roboto-BlackItalic.ttf */,
+				B071596C0B1C4E20BEAFA7F8 /* Roboto-Bold.ttf */,
+				D7D0F3B906ED4FB1904769C7 /* Roboto-BoldItalic.ttf */,
+				C63E21528AFD49C29D2507D0 /* Roboto-Italic.ttf */,
+				BA11D71DC99540E3AE5BBD3E /* Roboto-Light.ttf */,
+				4C2AAACC79204480BA043171 /* Roboto-LightItalic.ttf */,
+				505932C645E74D309996501B /* Roboto-Medium.ttf */,
+				AC44426BBD4F4CA8B9F88FCE /* Roboto-MediumItalic.ttf */,
+				345956A7471C48CA96927AD6 /* Roboto-Regular.ttf */,
+				55A6A0AABAD245C19B4BFF1A /* Roboto-Thin.ttf */,
+				B9CCCE13E0DE4AAC969A2C27 /* Roboto-ThinItalic.ttf */,
+				45F687A150034581B63F8184 /* appleStore.png */,
+				C696180FF4824F3FB3B62043 /* apricot.png */,
+				9682411D777F4A66946B0E5B /* aubergine.png */,
+				E98C22588D6248A2929CC4BA /* avocado.png */,
+				C58F63A56123489A974041DC /* berry.png */,
+				87B1B13815BD4BBBAE65645B /* brocoli.png */,
+				FCBEB6243AE048869CD31552 /* carousel1.png */,
+				4961FFE0FE974DC0896AEE24 /* carousel2.png */,
+				E2887054AAFC4BE3A00A054A /* carousel3.png */,
+				B49A4815E8414304B8795C1D /* celery.png */,
+				2032E2FCB1CD4758AFC6C1FD /* cherry.png */,
+				30AF78A876544851A4E046C7 /* coconut.png */,
+				F9AA2274C4664A44944646D3 /* corn.png */,
+				AA8915AA3C3E49A1A236B0FD /* cucumber.png */,
+				35516A079F1649F2B3EEC329 /* facebook.png */,
+				72C8CF3EBEFB486D9C9D1AE0 /* instagram.png */,
+				93D2B3729EE0407AA874B117 /* linkedin.png */,
+				FFD1664261B34CAD86B3CB26 /* mushroom.png */,
+				B9F96DBB2A84467791377AF7 /* onion.png */,
+				51F264587E98475385836013 /* papaya.png */,
+				0EE8899C4B1D45F3A5725F03 /* parsley.png */,
+				38C785012C27494394330FF2 /* pepper.png */,
+				E30A679DB6DF497B98804AE7 /* playStore.png */,
+				568A716507C248CF8591E14C /* store.png */,
+				B7124A8F54BC45148F6F51BB /* strawberry.png */,
+				426AFC466586417791DA3E81 /* tomato.png */,
+				E799430CC775488A996B1AE5 /* GroceriesMobile.svg */,
+				DB4BF2C067A94FD18D0C8314 /* baking.svg */,
+				DA548160E4DA446C848606A6 /* beverage.svg */,
+				77B24E49B42E4063A2232A15 /* dairy.svg */,
+				86705CEDBA764619BB325CCB /* dessert.svg */,
+				2F9A6EEB09AB4A55932A6754 /* fruits.svg */,
+				7334B0F8557D4643A3892109 /* grains.svg */,
+				C9F64DD8FDB04F428BECDDFC /* homecare.svg */,
+				607BF87E5F6448F3B7D1E99A /* index.js */,
+				EF85E3DA5AE446628E298D71 /* lettuce.svg */,
+				F814446B90F14C13A36B82DB /* meat.svg */,
+				5637BF0D524A4D22B6A68DAA /* others.svg */,
+				EFDFB4A9529940F5A4C65E75 /* personal.svg */,
+				FC4E7D7EAF88484781DD09D9 /* reject.svg */,
+				0B91DE4C56C74BE199A41247 /* sauce.svg */,
+				2FF6B94364DB4AA581787F64 /* seafood.svg */,
+				2DBDDBEE810A42BA9FD8C440 /* snack.svg */,
+				B60F25FA54DD4645A1BAEE96 /* vegetables.svg */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +303,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				48AD072C47284B4780EAA91F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -254,6 +428,61 @@
 				6739CF942C354ED4000A156E /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				879E69200D7D88D6973AB3FF /* PrivacyInfo.xcprivacy in Resources */,
+				D65ED22B37964970A5F2DE49 /* Roboto-BlackItalic.ttf in Resources */,
+				B63DF36C95B14EAC8E3B0BFD /* Roboto-Bold.ttf in Resources */,
+				3257740A5780413D9BBEFDCA /* Roboto-BoldItalic.ttf in Resources */,
+				DD2EDDFC10C24A62B4891D1D /* Roboto-Italic.ttf in Resources */,
+				3ABED87BF09F4FFFACBFD96E /* Roboto-Light.ttf in Resources */,
+				0B21B84F3B22465D82780CEE /* Roboto-LightItalic.ttf in Resources */,
+				304D682A92594E06BF190A4A /* Roboto-Medium.ttf in Resources */,
+				9087C5C1D4BB44419F178E39 /* Roboto-MediumItalic.ttf in Resources */,
+				7C60F108C8724567A97505C2 /* Roboto-Regular.ttf in Resources */,
+				A3B0F3D115DF42AA904FDE3E /* Roboto-Thin.ttf in Resources */,
+				79495717A7F14C658E0AA521 /* Roboto-ThinItalic.ttf in Resources */,
+				DB18316520E74BC0B6017E25 /* appleStore.png in Resources */,
+				0B558F29BB82498B99C5150E /* apricot.png in Resources */,
+				D409198C6225469EA69B9B12 /* aubergine.png in Resources */,
+				9CE8AAE996434A798B323EAE /* avocado.png in Resources */,
+				0FC397E30A1C46D18713CAB7 /* berry.png in Resources */,
+				D837902C5AE84FC8AFBF0F51 /* brocoli.png in Resources */,
+				620FDC16328641C38A7D89C7 /* carousel1.png in Resources */,
+				1E04B4CAB54F40DAB4CC29B9 /* carousel2.png in Resources */,
+				D7C622A66496455796C07111 /* carousel3.png in Resources */,
+				1F5EEBE0231D407BB30E21CA /* celery.png in Resources */,
+				AC66E6AFF8B44C3B944BE06E /* cherry.png in Resources */,
+				5E2C437D4CD54ACFA56CC898 /* coconut.png in Resources */,
+				358AFEFCB6154CCC9B7E2B4D /* corn.png in Resources */,
+				D2114A6F7BB84734A7352D1A /* cucumber.png in Resources */,
+				4A7EF70B7D3E47CCB8D64EE6 /* facebook.png in Resources */,
+				986412F043A7475DA59A9269 /* instagram.png in Resources */,
+				2391781FAFC64922813EA97D /* linkedin.png in Resources */,
+				F3C409B37A33411F85EBC0A2 /* mushroom.png in Resources */,
+				BD1FC56B64A94208943C4AB9 /* onion.png in Resources */,
+				3A5025F6062F4B3B9C3139F9 /* papaya.png in Resources */,
+				54C4388229074200B6F20CFB /* parsley.png in Resources */,
+				FEC5AC385A744182889D13F5 /* pepper.png in Resources */,
+				816C54C3B0A844DD952D457B /* playStore.png in Resources */,
+				7F2304BB2DC546A792FBCC1F /* store.png in Resources */,
+				A8A09466257C45F7A84977A7 /* strawberry.png in Resources */,
+				321453A8CFCF4680B7C7F19B /* tomato.png in Resources */,
+				DCCDB2283E2F4DF5A72F6638 /* GroceriesMobile.svg in Resources */,
+				D4D4E52265C24C398972E6FF /* baking.svg in Resources */,
+				1F6C57C1DD9444269FEAAB89 /* beverage.svg in Resources */,
+				87DF75769B3643B98173FC23 /* dairy.svg in Resources */,
+				68CA219100F0412EA000B52A /* dessert.svg in Resources */,
+				11870A6633404F7087F47308 /* fruits.svg in Resources */,
+				121A3BF1C90C4DED8925F108 /* grains.svg in Resources */,
+				3094F3C228AE464281A67C28 /* homecare.svg in Resources */,
+				C81B9CCD8947474C88AD0630 /* index.js in Resources */,
+				5E7AA6D073364AC2ABB4D9DC /* lettuce.svg in Resources */,
+				84BA6F4B6A734B0F828ECCC8 /* meat.svg in Resources */,
+				A709B07B4DFA414C8943C209 /* others.svg in Resources */,
+				E075FF968B0B4078B7864FC1 /* personal.svg in Resources */,
+				D18011E5A415471986AFB82B /* reject.svg in Resources */,
+				F30595B8B47A4336B0CF6A78 /* sauce.svg in Resources */,
+				D5EF05C4532047E48966FDFB /* seafood.svg in Resources */,
+				F7E7659BB750408FBED9A668 /* snack.svg in Resources */,
+				3615C1B4A2924249AFCE3C21 /* vegetables.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

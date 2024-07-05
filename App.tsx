@@ -7,12 +7,17 @@ import MobileNavigation from './src/navigation/mobileNavigation';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { Platform } from 'react-native';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { default as mapping } from './mapping.json'; 
 
 const App = () => {
   return (
     <>
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
+      <ApplicationProvider 
+        {...eva} 
+        theme={{ ...eva.light, ...theme }}
+        customMapping={mapping}
+        >
         {Platform.OS === 'web' ? (
           <Router>
             <WebNavigation />

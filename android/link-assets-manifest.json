@@ -1,0 +1,225 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Roboto-BlackItalic.ttf",
+      "sha1": "03d6e3747d862385dbe48e8296385b9236101a62"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-BoldItalic.ttf",
+      "sha1": "2f10ad9e8cab0880182705c4e0fbaeabae706e64"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Italic.ttf",
+      "sha1": "65f3f6a7e1bd2fa6f2df35e4b07775d7f1dde4f0"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Light.ttf",
+      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-LightItalic.ttf",
+      "sha1": "6e01f9df9449565697032b002706a94b51862bbe"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-MediumItalic.ttf",
+      "sha1": "b3aa2d8f16d5a331fdced82f213a052b204eaca0"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Thin.ttf",
+      "sha1": "58c733e22bceeaf9609ce578eca92ac303c6d92f"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-ThinItalic.ttf",
+      "sha1": "cc79d5a23bd0ec08b1d99f5390bf33cacc3082f4"
+    },
+    {
+      "path": "src/assets/images/appleStore.png",
+      "sha1": "4dd3aada26cba24eb5fc0f9c3fa7bc95cd0ed0c9"
+    },
+    {
+      "path": "src/assets/images/apricot.png",
+      "sha1": "2869d614fa11cc0fd1486fe8070e5bde23ee7a25"
+    },
+    {
+      "path": "src/assets/images/aubergine.png",
+      "sha1": "03cd2beae032f1fd16ce3e2afc6b1bc6a0e75f38"
+    },
+    {
+      "path": "src/assets/images/avocado.png",
+      "sha1": "d17172a46a81a2db0d247742e951d9c809c63e06"
+    },
+    {
+      "path": "src/assets/images/berry.png",
+      "sha1": "2fe5db5d22b0cd99de709d9a7575575ae739387e"
+    },
+    {
+      "path": "src/assets/images/brocoli.png",
+      "sha1": "6446000e56be216af8412a0f69236edbea4d5a1a"
+    },
+    {
+      "path": "src/assets/images/carousel1.png",
+      "sha1": "6e590b065ca7fadc981f9244ced0a7f8f999394a"
+    },
+    {
+      "path": "src/assets/images/carousel2.png",
+      "sha1": "6aca7e8d2defceeb76b94835acb5e8b369097a8e"
+    },
+    {
+      "path": "src/assets/images/carousel3.png",
+      "sha1": "13cce0d31afa3ccc3fc9a937c6486d1d1c7fd902"
+    },
+    {
+      "path": "src/assets/images/celery.png",
+      "sha1": "a0b1196a5a3cd0e5daed49744f76ce0cd3512bf7"
+    },
+    {
+      "path": "src/assets/images/cherry.png",
+      "sha1": "0b43d55ce790788cd4c480413c0b720eeb41c482"
+    },
+    {
+      "path": "src/assets/images/coconut.png",
+      "sha1": "6ce3b183516fca0f1413bfbd656f16cf42239141"
+    },
+    {
+      "path": "src/assets/images/corn.png",
+      "sha1": "76a6faaa1b07a01464338541f981309b24e82f7f"
+    },
+    {
+      "path": "src/assets/images/cucumber.png",
+      "sha1": "7dd952cbf4eef988bff9f9cda1d29f25e41ff414"
+    },
+    {
+      "path": "src/assets/images/facebook.png",
+      "sha1": "c0efbb60739509c15befbbd63a09c2f5c9f5a087"
+    },
+    {
+      "path": "src/assets/images/instagram.png",
+      "sha1": "0d259a593c044057d0f2df56549d654c3ef3fce2"
+    },
+    {
+      "path": "src/assets/images/linkedin.png",
+      "sha1": "cdc78747e8962281d5b6cf4f442d60da6a30b5eb"
+    },
+    {
+      "path": "src/assets/images/mushroom.png",
+      "sha1": "2e429159ea1856fae1e7f2a62adf5a5a562c0c47"
+    },
+    {
+      "path": "src/assets/images/onion.png",
+      "sha1": "1d09c233d5a0206db966a715c9bb359eed5090b3"
+    },
+    {
+      "path": "src/assets/images/papaya.png",
+      "sha1": "9898112f4a036027ff3f7d5b6efac9300c54392c"
+    },
+    {
+      "path": "src/assets/images/parsley.png",
+      "sha1": "8d74b6702dd2092810ad62a51991eb3ea60e5558"
+    },
+    {
+      "path": "src/assets/images/pepper.png",
+      "sha1": "74001a8932a4b6835f5ddefe396eb133caee71cc"
+    },
+    {
+      "path": "src/assets/images/playStore.png",
+      "sha1": "9e5a51608bf46b778339b88ad60b22d80dd3d676"
+    },
+    {
+      "path": "src/assets/images/store.png",
+      "sha1": "ca151dc352340ef5336bff28cff8ec08d1e5a8a1"
+    },
+    {
+      "path": "src/assets/images/strawberry.png",
+      "sha1": "b654bc729efd17b8dfbb531e090e67170c7e1fd5"
+    },
+    {
+      "path": "src/assets/images/tomato.png",
+      "sha1": "e89cba09c563c5ed66c354b8feee2855e332ff71"
+    },
+    {
+      "path": "src/assets/svgs/GroceriesMobile.svg",
+      "sha1": "efa3baf85c2eeaf99575741a9595f0d730c21f01"
+    },
+    {
+      "path": "src/assets/svgs/baking.svg",
+      "sha1": "0e5d4b69c60157fefe9e5c65f6d00db495270bb8"
+    },
+    {
+      "path": "src/assets/svgs/beverage.svg",
+      "sha1": "fe53cfb8bd5554aefe05e8ebd235bdf31d4dc507"
+    },
+    {
+      "path": "src/assets/svgs/dairy.svg",
+      "sha1": "da2861435af1e2c8d7a1bc6f867734fd6bda985d"
+    },
+    {
+      "path": "src/assets/svgs/dessert.svg",
+      "sha1": "4c1c71049ae3dbe0f1ff1e6d28fb8b39294d2e8c"
+    },
+    {
+      "path": "src/assets/svgs/fruits.svg",
+      "sha1": "77b149d93159a710f7a8fe48b97c3ce9253e1f04"
+    },
+    {
+      "path": "src/assets/svgs/grains.svg",
+      "sha1": "d9e986c2f2e36069e92a76ca0bdf2cf5a05839ef"
+    },
+    {
+      "path": "src/assets/svgs/homecare.svg",
+      "sha1": "843f07e5729eb2403b6fe493f27c14a2383c4364"
+    },
+    {
+      "path": "src/assets/svgs/index.js",
+      "sha1": "e76c09791902df4d1b609b8402cc0540a0b516b6"
+    },
+    {
+      "path": "src/assets/svgs/lettuce.svg",
+      "sha1": "327218e94d19bdf9245e764127e44c6cf182f500"
+    },
+    {
+      "path": "src/assets/svgs/meat.svg",
+      "sha1": "cbacad69d0e15591f4473203b309c7d0b392100f"
+    },
+    {
+      "path": "src/assets/svgs/others.svg",
+      "sha1": "48f6f6a1d1d67129d1b9f379008f77f0f75f59cd"
+    },
+    {
+      "path": "src/assets/svgs/personal.svg",
+      "sha1": "4766485d6e849cf319048c4cf277320cdfcea82c"
+    },
+    {
+      "path": "src/assets/svgs/reject.svg",
+      "sha1": "8da22a96d3b5001ed5c7bd17b895e4baaebd7dc1"
+    },
+    {
+      "path": "src/assets/svgs/sauce.svg",
+      "sha1": "ef3c5774d58ec2d2be05671a6ca858c12cebcffe"
+    },
+    {
+      "path": "src/assets/svgs/seafood.svg",
+      "sha1": "86bc0306b1c61ead93192467b98a0179e4064655"
+    },
+    {
+      "path": "src/assets/svgs/snack.svg",
+      "sha1": "af7230ed4bea10d1c5ab879aaae2315506c28d9f"
+    },
+    {
+      "path": "src/assets/svgs/vegetables.svg",
+      "sha1": "f17400821f9175083b6697ba23f21f8ce22e72ef"
+    }
+  ]
+}
