@@ -47,7 +47,7 @@ const imageLoaderConfiguration = {
 
 // File loader configuration
 const fileLoaderConfiguration = {
-  test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+  test: /\.(woff(2)?|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
   use: [
     {
       loader: 'file-loader',
@@ -55,6 +55,15 @@ const fileLoaderConfiguration = {
         name: '[name].[ext]',
         outputPath: 'fonts/',
       },
+    },
+  ],
+};
+
+const ttfLoaderConfiguration = {
+  test: /\.ttf$/,
+  use: [
+    {
+      loader: 'url-loader',
     },
   ],
 };
@@ -91,6 +100,7 @@ module.exports = argv => {
         babelLoaderConfiguration,
         imageLoaderConfiguration,
         fileLoaderConfiguration,
+        ttfLoaderConfiguration
       ],
     },
     plugins: [
