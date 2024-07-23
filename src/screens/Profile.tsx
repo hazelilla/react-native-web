@@ -298,8 +298,10 @@ const styles = StyleSheet.create({
   addressBoxWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 10,
     padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc'
   },
   address: {
     marginLeft: 10,

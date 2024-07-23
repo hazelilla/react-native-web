@@ -137,8 +137,9 @@ const WebCart = () => {
 
 const styles = StyleSheet.create({
     boxStyle: {
-        backgroundColor: "#F7F7F7",
         borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#ccc'
     },
     separator: {
         height: 1,

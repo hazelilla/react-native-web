@@ -70,6 +70,8 @@ const MobileCart = () => {
 const styles = StyleSheet.create({
     boxStyle: {
         borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#ccc'
     },
     separator: {
         height: 1,
