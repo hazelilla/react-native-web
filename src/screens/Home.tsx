@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
     },
     boxStyle: {
-        backgroundColor: "#F7F7F7",
+       
         borderRadius: 10,
         padding: 10,
     },

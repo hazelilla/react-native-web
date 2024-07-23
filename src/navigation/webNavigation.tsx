@@ -12,7 +12,11 @@ const SearchIcon = (props: any) => (
     <Icon {...props} name='search-outline' />
 );
 
-const WebNavigation: React.FC = () => {
+interface WebNavProps {
+    toggleTheme: () => void;
+}
+
+const WebNavigation: React.FC<WebNavProps> = ({ toggleTheme }) => {
     const location = useLocation();
     const [value, setValue] = useState('');
     const navigate = useNavigate();
@@ -140,7 +144,7 @@ const WebNavigation: React.FC = () => {
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/browse" element={<BrowseScreen />} />
                 <Route path="/cart" element={<CartScreen />} />
-                <Route path="/profile" element={<ProfileScreen />} />
+                <Route path="/profile" element={<ProfileScreen toggleTheme={toggleTheme} />} />
             </Routes>
         </View>
     );

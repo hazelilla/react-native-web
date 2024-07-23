@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import Cookies from 'universal-cookie';
-
-const cookies = new Cookies();
+import CookieManager from '@react-native-cookies/cookies';
 
 const CookieConsent = ({ onAccept, onReject }) => {
+
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const consent = cookies.get('cookieConsent');
-    if (!consent) {
-      setIsVisible(true);
-    }
+    const checkConsent = async () => {
+      const cookies = await CookieManager.getAll();
+      if (!cookies.cookieConsent) {
+        setIsVisible(true);
+      }
+    };
+    checkConsent();
   }, []);
 
-  const acceptCookies = () => {
-    cookies.set('cookieConsent', 'accepted', { path: '/' });
+  const acceptCookies = async () => {
+    await CookieManager.set('http://localhost:3000', {
+      name: 'cookieConsent',
+      value: 'accepted',
+      path: '/',
+      domain: 'localhost',
+      secure: true,
+      httpOnly: true,
+    });
     setIsVisible(false);
     onAccept();
   };
 
-  const rejectCookies = () => {
+  const rejectCookies = async () => {
+    await CookieManager.clearByName('cookieConsent', 'http://localhost:3000');
     setIsVisible(false);
     onReject();
   };

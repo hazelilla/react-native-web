@@ -20,12 +20,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ visible, onClos
             onRequestClose={onClose}
         >
             <View style={styles.modalBackground}>
-                <View style={styles.modalContainer}>
+                <Layout style={styles.modalContainer}>
                     <Image source={image} style={styles.image} resizeMode='cover' />
                     <Text category='h5' style={styles.title}>{title}</Text>
                     <Text category='p1'>{description}</Text>
                     <Button onPress={onClose} style={styles.button}>Close</Button>
-                </View>
+                </Layout>
             </View>
         </Modal>
     );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: 300,
         padding: 20,
-        backgroundColor: 'white',
+   
         borderRadius: 10,
         alignItems: 'center',
     },
