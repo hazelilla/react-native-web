@@ -2920,6 +2920,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:^1.24.0":
+  version: 1.24.0
+  resolution: "@react-native-async-storage/async-storage@npm:1.24.0"
+  dependencies:
+    merge-options: ^3.0.4
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.60 <1.0
+  checksum: 7e56a2e97f48332f57c56ebf473b763c7ca2b1ef82f4b5f8e1c73350231ec91b8eafc4e4d1f972c4c1005da0d304816fa725dc6f07a8a7543e90f8bd16c22ab4
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:13.6.6":
   version: 13.6.6
   resolution: "@react-native-community/cli-clean@npm:13.6.6"
@@ -3118,6 +3129,17 @@ __metadata:
     react: ">=16.0"
     react-native: ">=0.57"
   checksum: 246bcd94a6a2cafc415c7a192fb5a76ef7cd9b648b47ea4b2366f06128376ab377dcff3fab676261050fd3a97324bde5d64802aa3e8d1580fe6c0e3b0138cefc
+  languageName: node
+  linkType: hard
+
+"@react-native-cookies/cookies@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "@react-native-cookies/cookies@npm:6.2.1"
+  dependencies:
+    invariant: ^2.2.4
+  peerDependencies:
+    react-native: ">= 0.60.2"
+  checksum: 65ec7485952b719191cc3d131b1befdebdb0b422baaf655fd37ad6455ac05582a81b9d7f023ffa375a8787c30d33d1195dea46f633fb6cc09ccd2ae810795ce2
   languageName: node
   linkType: hard
 
@@ -3799,6 +3821,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 7eb1bc5342a9604facd57598a6c62621e244822442976c443efb84ff745246b10d06e8b309b6e80130026a396f19bf6793b7cecd7380169f369dac3bfc46fb99
+  languageName: node
+  linkType: hard
+
+"@types/cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@types/cookie@npm:0.6.0"
+  checksum: 5edce7995775b0b196b142883e4d4f71fd93c294eaec973670f1fa2540b70ea7390408ed513ddefef5fcb12a578100c76596e8f2a714b0c2ae9f70ee773f4510
   languageName: node
   linkType: hard
 
@@ -4551,8 +4580,10 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@eva-design/eva": ^2.2.0
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.15
+    "@react-native-async-storage/async-storage": ^1.24.0
     "@react-native-community/geolocation": ^3.2.1
     "@react-native-community/masked-view": ^0.1.11
+    "@react-native-cookies/cookies": ^6.2.1
     "@react-native-firebase/analytics": ^20.1.0
     "@react-native-firebase/app": ^20.1.0
     "@react-native/babel-preset": 0.74.83
@@ -4603,6 +4634,7 @@ __metadata:
     react-router-dom: ^6.23.1
     react-test-renderer: 18.2.0
     typescript: 5.0.4
+    universal-cookie: ^7.1.4
     url-loader: ^4.1.1
     webpack: ^5.91.0
     webpack-cli: ^5.1.4
@@ -5889,7 +5921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.6.0":
+"cookie@npm:0.6.0, cookie@npm:^0.6.0":
   version: 0.6.0
   resolution: "cookie@npm:0.6.0"
   checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
@@ -8587,6 +8619,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-plain-obj@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "is-plain-obj@npm:2.1.0"
+  checksum: cec9100678b0a9fe0248a81743041ed990c2d4c99f893d935545cfbc42876cbe86d207f3b895700c690ad2fa520e568c44afc1605044b535a7820c1d40e38daa
+  languageName: node
+  linkType: hard
+
 "is-plain-obj@npm:^3.0.0":
   version: 3.0.0
   resolution: "is-plain-obj@npm:3.0.0"
@@ -9875,6 +9914,15 @@ __metadata:
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 5abc259d2ae25bb06d19ce2b94a21632583c74e2a9109ee1ba7fd147aa7362b380d971e0251069f8b3eb7d48c21ac839e21fa177b335e82c76ec172e30c31a26
+  languageName: node
+  linkType: hard
+
+"merge-options@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "merge-options@npm:3.0.4"
+  dependencies:
+    is-plain-obj: ^2.1.0
+  checksum: d86ddb3dd6e85d558dbf25dc944f3527b6bacb944db3fdda6e84a3f59c4e4b85231095f58b835758b9a57708342dee0f8de0dffa352974a48221487fe9f4584f
   languageName: node
   linkType: hard
 
@@ -13469,6 +13517,16 @@ __metadata:
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 0884b58365af59f89739e6f71e3feacb5b1b41f2df2d842d0757933620e6de08eff347d27e9d499b43c40476cbaf7988638d3acb2ffbcb9d35fd035591adfd15
+  languageName: node
+  linkType: hard
+
+"universal-cookie@npm:^7.1.4":
+  version: 7.1.4
+  resolution: "universal-cookie@npm:7.1.4"
+  dependencies:
+    "@types/cookie": ^0.6.0
+    cookie: ^0.6.0
+  checksum: 2b3459dcac8b0062b6a1853a826d67314bb2311e16d803b521be72ff554a9b6cfeb36499241949995910f87587722d928e6801b39c80b621dccfd62d5b3022d8
   languageName: node
   linkType: hard
 
