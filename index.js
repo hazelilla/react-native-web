@@ -7,6 +7,8 @@ import App from './App';
 import {createRoot} from 'react-dom/client';
 import {Platform} from 'react-native';
 import {name as appName} from './app.json';
+import Reactotron from './ReactotronConfig'; 
+Reactotron.log('Hello from Reactotron!'); 
 
 AppRegistry.registerComponent(appName, () => App);
 
