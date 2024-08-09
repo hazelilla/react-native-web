@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, ActivityIndicator, TextInput, Button, StyleSheet} from 'react-native';
-import {useQuery, gql, useMutation} from '@apollo/client';
-import {CREATE_POST, GET_USER} from '../utils/gql_apis';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  TextInput,
+  Button,
+  StyleSheet,
+} from 'react-native';
+import {useQuery, useMutation} from '@apollo/client';
+import {CREATE_POST, GET_USER, DELETE_POST} from '../utils/gql_apis';
 
 const Apollo = () => {
   const [user, setUser] = useState({
@@ -11,18 +18,32 @@ const Apollo = () => {
   });
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
+  const [postId, setPostId] = useState(null);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+
+  const {data, loading, refetch} = useQuery(GET_USER, {
+    variables: {id: 1},
+  });
+
   const [createPost, {loading: mutationLoading, data: mutationData}] =
     useMutation(CREATE_POST);
 
-  const {data, loading} = useQuery(GET_USER, {
-    variables: {id: 1},
-  });
+  const [deletePost, {loading: deleteLoading, data: deleteData}] =
+    useMutation(DELETE_POST);
 
   useEffect(() => {
     if (data) {
       setUser(data.user);
     }
-  }, [data]);
+    if (mutationData) {
+      setPostId(mutationData.createPost.id);
+      refetch();
+    }
+    if(deleteData) {
+      setPostTitle('');
+      setPostBody('');
+    }
+  }, [data, mutationData, refetch, deleteData]);
 
   const handleCreatePost = () => {
     createPost({
@@ -35,7 +56,21 @@ const Apollo = () => {
     });
   };
 
-  if (loading) {
+  const handleDeletePost = () => {
+    if (postId) {
+      setPostTitle('');
+      setPostBody('');
+      deletePost({
+        variables: {id: postId},
+      }).then(() => {
+        setShowDeleteMessage(true);
+        setTimeout(() => setShowDeleteMessage(false), 2000); 
+        refetch();
+      });
+    }
+  };
+
+  if (loading || mutationLoading || deleteLoading) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#0000ff" />
@@ -60,7 +95,6 @@ const Apollo = () => {
         style={styles.input}
       />
       <Button title="Create Post" onPress={handleCreatePost} color="#0066cc" />
-      {mutationLoading && <ActivityIndicator size="large" color="#0000ff" />}
       {mutationData && (
         <View style={styles.successContainer}>
           <Text style={styles.successText}>Post Created!</Text>
@@ -72,6 +106,12 @@ const Apollo = () => {
           </Text>
         </View>
       )}
+      {showDeleteMessage && (
+        <View style={styles.successContainer}>
+          <Text style={styles.successText}>Post Deleted!</Text>
+        </View>
+      )}
+      <Button title="Delete Post" onPress={handleDeletePost} color="#cc0000" />
     </View>
   );
 };
@@ -82,7 +122,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#f5f5f5',
   },
   loadingContainer: {
     flex: 1,
@@ -119,7 +159,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#28a745',
     marginBottom: 5,
-  }
+  },
 });
 
 export default Apollo;
